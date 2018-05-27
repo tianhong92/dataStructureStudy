@@ -45,12 +45,9 @@ public class ReverseList {
         Node node1 = new Node(1);
         Node node2 = new Node(2);
 
-
-
         head.setNext(node1);
         node1.setNext(node2);
         node2.setNext(null);
-
 
         Node current = reverse2(head);
         while(current != null) {
