@@ -7,7 +7,7 @@ public class StringToInteger {
         boolean flag = true; // 正负
         Long result = 0l;
         int startIndex = 0;
-        int length = str.length();
+        int length = 0; //整数的实际长度
         char[] chars = str.toCharArray();
 
         for(int i = 0; i < length; i++) {
@@ -25,15 +25,32 @@ public class StringToInteger {
                     continue;
                 }
             }
-
-            result = result*10 + current;
+            if(current >= '0' && current <= '9') {
+                result = result * 10 + ( current - '0'); //哇！ 原来-'0'可以将字符转int类型
+                length++;
+                if(length > 10) {
+                    break;
+                }
+            } else {
+                break;
+            }
 
         }
-        return 0;
+
+        if(result < Integer.MIN_VALUE) {
+            return Integer.MIN_VALUE;
+        }
+        if(result > Integer.MAX_VALUE) {
+            return Integer.MAX_VALUE;
+        }
+
+        return result.intValue();
     }
 
     public static void main(String[] args) {
-        ;
+        //Long result = 0L;
+        //result = result*10+'8'-'0';
+        System.out.println(Integer.MIN_VALUE);
     }
 
 }
