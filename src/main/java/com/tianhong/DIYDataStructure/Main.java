@@ -2,7 +2,7 @@ package com.tianhong.DIYDataStructure;
 
 public class Main {
     public static void main(String[] args) {
-        Array arr = new Array(10);
+        Array<Integer> arr = new Array(10);
         for(int i = 0; i < 5; i++) {
             arr.addLast(i);
         }
