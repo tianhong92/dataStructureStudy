@@ -1,4 +1,4 @@
-package com.tianhong.DIYDataStructure;
+package com.tianhong.DIYDataStructure.Array;
 
 // 数组最大优点： 快速查询； 数组最好应用在："索引有语意"的情况
 public class Array<E> {
@@ -6,11 +6,6 @@ public class Array<E> {
     // Capacity == data.length
     private E[] data;
     private int size;
-
-    /**
-     *
-     * @param capacity
-     */
 
     public Array(int capacity) {
         data = (E[])new Object[capacity];

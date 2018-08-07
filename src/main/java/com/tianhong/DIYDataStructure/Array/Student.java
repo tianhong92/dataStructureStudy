@@ -1,4 +1,4 @@
-package com.tianhong.DIYDataStructure;
+package com.tianhong.DIYDataStructure.Array;
 
 public class Student {
     private String name;
