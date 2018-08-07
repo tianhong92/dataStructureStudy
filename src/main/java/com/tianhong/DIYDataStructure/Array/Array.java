@@ -56,14 +56,22 @@ public class Array<E> {
     }
 
     //获取index索引位置的元素
-    E get(int index) {
+    public E get(int index) {
         if(index < 0 || index >= size)
             throw new IllegalArgumentException("Get failed, index is illegal");
         return data[index];
     }
 
+    public E getLast() {
+        return get(size -1);
+    }
+
+    public E getFirst() {
+        return get(0);
+    }
+
     //修改index索引位置的元素
-    void set(int index, E e) {
+    public void set(int index, E e) {
         if(index < 0 || index >=size)
             throw new IllegalArgumentException("Set failed, index is illegal");
         data[index] = e;

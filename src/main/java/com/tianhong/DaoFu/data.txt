@@ -1,0 +1,21 @@
+Tim Duncan, 10235, 38, 10254
+LeBron James, 10254, 35
+Kawhi Leonard, 10333, 29, 10254
+Stephen Curry, 10258, 30
+Russell Westbrook, 10661, 31, 10258
+James Harden, 10858, 29, 10235
+Anthony Davis, 10756, 24, 10661
+Draymood Green, 10374, 27, 10235
+Chris Paul, 10768, 33, 10858
+Black Griffin, 10457, 31, 10768
+Mike Conley, 11420, 35, 10661
+John Wall, 11470, 26, 10258
+Trevor Ariza, 11231, 32, 10768
+Cody Zeller, 11444, 29, 10333
+Taj Gibson, 12054, 35, 10374
+J.J. Redick, 10882, 33, 10457
+Dennis Smith, 10542, 24, 10858
+Evan Fournier, 10222, 19, 11420
+Rodney Hood, 10547, 25, 10882
+Marcin Gortat, 10579, 38, 10882
+James Johnson, 15777, 25, 10579

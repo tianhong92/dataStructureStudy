@@ -1,0 +1,5 @@
+Tim Duncan, 10235, 38, 10254
+LeBron James, 10254, 35
+Kawhi Leonard, 10333, 29, 10254
+Stephen Curry, 10258, 30
+Russell Westbrook, 10661, 31, 10258
