@@ -70,14 +70,53 @@ public class Array {
             throw new IllegalArgumentException("Set failed, index is illegal");
         data[index] = e;
     }
-    //数组中查询元素， 如果存在返回下标， 如果不存在返回-1
-    public int findIndex(int e) {
-        for(int i = 0; i < size; i++) {
-            if(data[i] == e) {
+
+    // 查找数组是否存在元素为e
+    public boolean contains(int e) {
+        for(int i=0; i < size; i++) {
+            if(data[i] == e)
+                return true;
+        }
+        return false;
+    }
+
+    // 查找数组中元素e所在的索引，如果不存在e， 则返回-1
+    public int find(int e) {
+        for(int i=0; i < size; i++) {
+            if(data[i] == e)
                 return i;
-            }
         }
         return -1;
+    }
+
+    // 删除指定索引的元素, 返回删除的元素
+    public int remove(int index) {
+        if(index < 0 || index > size) {
+            throw new IllegalArgumentException("Delete failed, the index is illegal");
+        }
+        int ret = data[index];
+        for(int i = size - 1; i > index; i--) {
+            data[i-1] = data[i];
+        }
+        size--;
+        return ret;
+    }
+
+    //从数组中删除第一个元素， 返回删除的元素
+    public int removeFirst() {
+        return remove(0);
+    }
+
+    //从数组中删除最后一个元素， 返回删除的元素
+    public int removeLast() {
+        return remove(size -1);
+    }
+
+    //从数组中删除元素e
+    public void removeElement(int e) {
+        int index = find(e);
+        if(index != -1)
+            remove(index);
     }
 
     @Override
