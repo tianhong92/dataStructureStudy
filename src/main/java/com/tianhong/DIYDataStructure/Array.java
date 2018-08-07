@@ -103,7 +103,8 @@ public class Array<E> {
         }
         size--;
         data[size] = null; // loitering objects != memory leak
-        if(size == data.length/2) {
+        // lazy缩容， 防止震荡
+        if(size == data.length/4 && data.length != 1) {
             resize((int) (data.length/2));
         }
         return ret;
