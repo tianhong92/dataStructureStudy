@@ -57,6 +57,29 @@ public class Array {
         size ++;
     }
 
+    //获取index索引位置的元素
+    int get(int index) {
+        if(index < 0 || index >= size)
+            throw new IllegalArgumentException("Get failed, index is illegal");
+        return data[index];
+    }
+
+    //修改index索引位置的元素
+    void set(int index, int e) {
+        if(index < 0 || index >=size)
+            throw new IllegalArgumentException("Set failed, index is illegal");
+        data[index] = e;
+    }
+    //数组中查询元素， 如果存在返回下标， 如果不存在返回-1
+    public int findIndex(int e) {
+        for(int i = 0; i < size; i++) {
+            if(data[i] == e) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder();
