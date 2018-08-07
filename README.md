@@ -4,7 +4,9 @@
 见DIYDataStructure目录
 * Array
       
-      数组删除引用类型元素会产生loitering objects, 但不等于memory leak  
+      数组删除引用类型元素会产生loitering objects, 但不等于memory leak
+      动态数组resize会导致时间复杂度增加， 但是不是每次都触发resize， 可以
+      用均摊复杂度分析。 但是还是要防止复杂度震荡。  缩容采取Lazy的方式。
 ### 使用泛型
 * 让数据结构能放置“任何”数据类型
 * 不可以是基本数据类型， 只能是类对象
