@@ -3,6 +3,7 @@ package com.tianhong.DIYDataStructure;
 // 数组最大优点： 快速查询； 数组最好应用在："索引有语意"的情况
 public class Array<E> {
 
+    // Capacity == data.length
     private E[] data;
     private int size;
 
@@ -43,13 +44,15 @@ public class Array<E> {
 
     // 向数组指定位置添加一个新元素
     public void add(int index, E e) {
-        if(size == data.length) {
-            throw new IllegalArgumentException("Add failed, the array is full.");
-        }
         // 元素必须紧密排列
         if(index < 0 || index > size) {
             throw new IllegalArgumentException("Add failed, require index >=0 and index <= size");
         }
+
+        if(size == data.length) {
+            resize(2*data.length);
+        }
+
         for(int i = size; i > index; i--) {
             data[i] = data[i-1];
         }
@@ -100,6 +103,9 @@ public class Array<E> {
         }
         size--;
         data[size] = null; // loitering objects != memory leak
+        if(size == data.length/2) {
+            resize((int) (data.length/2));
+        }
         return ret;
     }
 
@@ -133,5 +139,13 @@ public class Array<E> {
         }
         res.append(']');
         return res.toString();
+    }
+
+    private void resize(int newCapacity) {
+        E[] newData = (E[])new Object[newCapacity];
+        for(int i = 0; i < size; i++) {
+            newData[i] = data[i];
+        }
+        data = newData;
     }
 }
