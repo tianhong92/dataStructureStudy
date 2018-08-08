@@ -1,4 +1,4 @@
-package com.tianhong;
+package com.tianhong.leetcode;
 
 public class DaxiInterview {
     public static void sort(int[] arr, int start, int end) {

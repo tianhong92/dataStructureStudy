@@ -1,4 +1,4 @@
-package com.tianhong.removeListNode;
+package com.tianhong.leetcode.removeListNode;
 
 // leetcode #203 remove linked list elements
 // input:  1->2->6->3->4->5->6, val = 6

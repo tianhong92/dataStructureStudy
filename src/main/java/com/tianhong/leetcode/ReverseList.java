@@ -1,4 +1,4 @@
-package com.tianhong;
+package com.tianhong.leetcode;
 
 public class ReverseList {
 

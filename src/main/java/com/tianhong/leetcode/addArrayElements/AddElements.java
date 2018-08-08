@@ -1,4 +1,4 @@
-package com.tianhong.addArrayElements;
+package com.tianhong.leetcode.addArrayElements;
 
 public class AddElements {
     public static void main(String[] args) {

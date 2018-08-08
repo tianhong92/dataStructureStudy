@@ -1,4 +1,4 @@
-package com.tianhong;
+package com.tianhong.leetcode;
 
 import java.util.ArrayList;
 import java.util.Arrays;

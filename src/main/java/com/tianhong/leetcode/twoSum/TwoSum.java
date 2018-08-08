@@ -1,4 +1,4 @@
-package com.tianhong.twoSum;
+package com.tianhong.leetcode.twoSum;
 
 import java.util.HashMap;
 import java.util.Map;

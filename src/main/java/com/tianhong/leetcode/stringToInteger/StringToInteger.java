@@ -1,4 +1,4 @@
-package com.tianhong.stringToInteger;
+package com.tianhong.leetcode.stringToInteger;
 
 // implement function to convert a string to an integer
 // input = {'0123', '+454', '-879'. ' +872', '  -878'}
