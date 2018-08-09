@@ -52,24 +52,24 @@ public class LinkedList<E> {
     // 在链表index（0-based)位置添加新的元素e
     // 在链表中不是一个常用的操作， 练习用， 一般不用索引
     public void add(int index, E e){
-       if(index < 0 || index > size) {
+        if(index < 0 || index > size) {
            throw new IllegalArgumentException("Add failed, illegal index");
        }
 
-       if(index == 0){
-           addFirst(e);
+       if(index == 0) {
+           head = new Node(e, null);
+           size++;
        } else {
-           Node prev = head;
-           for(int i = 0; i < index -1; i++) {
-               prev = prev.next;
+           for(int i = 0; i < index - 1; i++){
+               head = head.next;
            }
            Node node = new Node(e);
-           Node next = prev.next;
-           prev.next = node;
+           Node next = head.next;
+           head.next = node;
            node.next = next;
-
            size++;
        }
+
     }
 
     public void addLast(E e) {
