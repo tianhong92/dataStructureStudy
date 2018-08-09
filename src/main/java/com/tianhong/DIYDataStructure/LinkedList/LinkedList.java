@@ -60,12 +60,13 @@ public class LinkedList<E> {
            head = new Node(e, null);
            size++;
        } else {
+           Node prev = head;
            for(int i = 0; i < index - 1; i++){
-               head = head.next;
+               prev = head.next;
            }
            Node node = new Node(e);
-           Node next = head.next;
-           head.next = node;
+           Node next = prev.next;
+           prev.next = node;
            node.next = next;
            size++;
        }
