@@ -57,7 +57,9 @@ public class LinkedList<E> {
        }
 
        if(index == 0) {
-           head = new Node(e, null);
+           Node node = new Node(e);
+           node.next = head;
+           head = node;
            size++;
        } else {
            Node prev = head;
