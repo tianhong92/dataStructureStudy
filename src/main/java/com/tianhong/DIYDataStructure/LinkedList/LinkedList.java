@@ -1,10 +1,10 @@
 package com.tianhong.DIYDataStructure.LinkedList;
 
-public class LinkedList<E> {
+public class LinkedList<E> implements List<E> {
 
     private class Node{
-        public E e;
-        public Node next;
+        private E e;
+        private Node next;
 
         public Node(E e, Node next) {
             this.e = e;
