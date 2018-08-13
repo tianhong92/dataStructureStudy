@@ -56,6 +56,28 @@ public class DummyHeadLinkedList<E> implements List<E> {
         add(size, e);
     }
 
+    // 获得链表的第index（0-based）个位置的元素
+    // 在链表中不是常用的操作， 练习用
+    public E get(int index){
+        if(index < 0 || index > size - 1){
+            throw new IllegalArgumentException("Get failed, Illegal index.");
+        }
+        Node cur = head.next;
+        for(int i = 0; i < index; i++) {
+            cur = cur.next;
+        }
+        return cur.e;
+    }
+
+    // 获取链表第一个元素
+    public E getFirst() {
+        return get(0);
+    }
+
+    // 获取链表最后一个元素
+    public E getLast() {
+        return get(size - 1);
+    }
     @Override
     public String toString(){
         StringBuilder str = new StringBuilder();
