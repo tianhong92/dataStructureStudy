@@ -59,7 +59,7 @@ public class DummyHeadLinkedList<E> implements List<E> {
     // 获得链表的第index（0-based）个位置的元素
     // 在链表中不是常用的操作， 练习用
     public E get(int index){
-        if(index < 0 || index > size - 1){
+        if(index < 0 || index >= size){
             throw new IllegalArgumentException("Get failed, Illegal index.");
         }
         Node cur = head.next;
@@ -78,6 +78,32 @@ public class DummyHeadLinkedList<E> implements List<E> {
     public E getLast() {
         return get(size - 1);
     }
+
+    // 修改链表第index（0-based)个位置的元素为e
+    // 在链表中不是一个常用的操作， 练习用
+    public void set(int index, E e){
+        if(index < 0 || index >= size) {
+            throw new IllegalArgumentException("Set failed, Illegal index.");
+        }
+        Node cur = head.next;
+        for(int i = 0; i <= index; i++){
+            cur = cur.next;
+        }
+        cur.e = e;
+    }
+
+    // 查找链表中是否存在元素e
+    public boolean contains(E e){
+        Node cur = head.next;
+        for(int i = 0; i < size - 1; i++){
+            cur = cur.next;
+            if(cur.e.equals(e)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public String toString(){
         StringBuilder str = new StringBuilder();
@@ -101,5 +127,6 @@ public class DummyHeadLinkedList<E> implements List<E> {
             list.add(i, i);
         }
         System.out.println(list);
+        System.out.println(list.contains(3));
     }
 }
