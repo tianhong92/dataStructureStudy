@@ -42,7 +42,7 @@ public class DummyHeadLinkedList<E> implements List<E> {
         }
         Node prev = head;
         for(int i = 0; i < index; i++){
-            prev = head.next;
+            prev = prev.next;
         }
         Node next = prev.next;
         Node node = new Node(e);
@@ -75,6 +75,7 @@ public class DummyHeadLinkedList<E> implements List<E> {
     public static void main(String[] args) {
         DummyHeadLinkedList<Integer> list = new DummyHeadLinkedList<>();
         for(int i = 0; i < 3; i++){
+            System.out.println(i);
             list.add(i, i);
         }
         System.out.println(list);
