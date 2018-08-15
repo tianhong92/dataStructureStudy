@@ -41,33 +41,29 @@ public class ListNode {
             }
         }
         return head;
-
     }
 
     public static void main(String[] args) {
-        ListNode node7 = new ListNode(7, null);
+        ListNode node7 = new ListNode(3, null);
         ListNode node6 = new ListNode(3, node7);
         ListNode node5 = new ListNode(5, node6);
         ListNode node4 = new ListNode(3, node5);
         ListNode node3 = new ListNode(3, node4);
         ListNode node2 = new ListNode(3, node3);
-        ListNode node1 = new ListNode(3, node2);
+        ListNode node1 = new ListNode(1, node2);
 
-        ListNode head = node1;
-        while (head != null){
-            System.out.print(head.val+" ");
-            head = head.next;
+        ListNode head1 = node1;
+        while (head1 != null){
+            System.out.print(head1.val+" ");
+            head1 = head1.next;
         }
-
-        removeNode(node1, 3);
-        System.out.println();
-
+        System.out.println("end");
         ListNode head2 = node1;
-        while (head2 != null){
-            System.out.print(head2.val+" ");
-            head2 = head2.next;
+        ListNode newNode = removeNode(head2, 3);
+        while(newNode != null){
+            System.out.print(newNode.val+" ");
+            newNode = newNode.next;
         }
-
     }
 }
 
