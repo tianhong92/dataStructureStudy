@@ -121,6 +121,14 @@ public class DummyHeadLinkedList<E> implements List<E> {
         return cur.e;
     }
 
+    public E removeFirst() {
+        return remove(0);
+    }
+
+    public E removeLast(){
+        return remove(size - 1);
+    }
+
     @Override
     public String toString(){
         StringBuilder str = new StringBuilder();
