@@ -20,7 +20,7 @@ public class Main {
     public static void main(String[] args) {
         Stack<Integer> stack = new ArrayStack<>();
         Stack<Integer> stack2 = new LinkListStack<>();
-        int opCount = 100000;
+        int opCount = 10000;
         double opTime1 = opTime(opCount, stack);
         double opTime2 = opTime(opCount, stack2);
 
