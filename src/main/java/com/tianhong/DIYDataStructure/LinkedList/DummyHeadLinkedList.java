@@ -86,7 +86,7 @@ public class DummyHeadLinkedList<E> implements List<E> {
             throw new IllegalArgumentException("Set failed, Illegal index.");
         }
         Node cur = head.next;
-        for(int i = 0; i <= index; i++){
+        for(int i = 0; i < index; i++){
             cur = cur.next;
         }
         cur.e = e;
@@ -102,6 +102,23 @@ public class DummyHeadLinkedList<E> implements List<E> {
             }
         }
         return false;
+    }
+
+    // 从链表中删除第index（0-based）个元素, 并返回这个元素
+    // 不是链表中常用操作， 练习用
+    public E remove(int index){
+        if(index < 0 || index >= size) {
+            throw new IllegalArgumentException("Remove failed, illegal index.");
+        }
+        Node prev = head;
+        for(int i = 0; i < index; i++){
+            prev = prev.next;
+        }
+        Node cur = prev.next;
+        prev.next = cur.next;
+        cur.next = null;
+        size--;
+        return cur.e;
     }
 
     @Override
@@ -127,6 +144,9 @@ public class DummyHeadLinkedList<E> implements List<E> {
             list.add(i, i);
         }
         System.out.println(list);
-        System.out.println(list.contains(3));
+        list.set(1, 4);
+        System.out.println(list);
+        list.remove(1);
+        System.out.println(list);
     }
 }
