@@ -20,11 +20,10 @@ public class ListNode {
     }
 
     public static ListNode removeNode(ListNode head, int target){
-        if(head == null){
-            return null;
-        }
         while(head != null && head.val == target){
+            ListNode temp = head;
             head = head.next;
+            temp = null;
         }
         if(head == null){
             return null;

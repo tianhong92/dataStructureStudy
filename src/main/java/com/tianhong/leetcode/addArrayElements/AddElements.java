@@ -4,7 +4,7 @@ public class AddElements {
     public static void main(String[] args) {
        int[] array = {1, 3, 5, 7, 9};
        AddElements addElements = new AddElements();
-       System.out.println("Sum = " + addElements.sum2(array,  array.length -1));
+       System.out.println("Sum = " + addElements.sum2(array,  3));
     }
 
     // return array[l, n)
