@@ -47,13 +47,8 @@ public class ListNode {
         if(head == null) {
             return null;
         }
-        ListNode res = removeNode2(head.next, target);
-        if(head.val == target){
-            return res;
-        } else {
-            head.next = res;
-            return head;
-        }
+        head.next = removeNode2(head.next, target);
+        return head.val == target ? head.next : head;
     }
 
     public static void main(String[] args) {
