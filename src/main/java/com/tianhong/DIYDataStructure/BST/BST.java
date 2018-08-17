@@ -69,7 +69,7 @@ public class BST<E extends Comparable<E>> {
         if(root == null){
             return;
         }
-        else if(root.left != null){
+        if(root.left != null){
             print(root.left);
         }
         System.out.println(root.e);
@@ -79,13 +79,19 @@ public class BST<E extends Comparable<E>> {
     }
 
     public void addNodes(){
-        add((E) new Integer(5));
-        add((E) new Integer(8));
-        add((E) new Integer(9));
-        add((E) new Integer(3));
-        add((E) new Integer(2));
-        add((E) new Integer(4));
+        Node node1 = new Node((E) new Integer(5));
+        Node node2 = new Node((E) new Integer(4));
+        Node node3 = new Node((E) new Integer(7));
+        Node node4 = new Node((E) new Integer(8));
+        Node node5 = new Node((E) new Integer(1));
+        add(node1);
+        add(node2);
+        add(node3);
+        add(node4);
+        add(node5);
+        print(this.root);
     }
+
 
     public static void main(String[] args) {
         BST<Integer> tree = new BST<>();
