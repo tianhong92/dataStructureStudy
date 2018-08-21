@@ -42,6 +42,15 @@ public class ListNode {
         return head;
     }
 
+    // remove nodes in a recursive way
+    public static ListNode removeNode2(ListNode head, int target){
+        if(head == null) {
+            return null;
+        }
+        head.next = removeNode2(head.next, target);
+        return head.val == target ? head.next : head;
+    }
+
     public static void main(String[] args) {
         ListNode node7 = new ListNode(3, null);
         ListNode node6 = new ListNode(3, node7);
@@ -58,7 +67,7 @@ public class ListNode {
         }
         System.out.println("end");
         ListNode head2 = node1;
-        ListNode newNode = removeNode(head2, 3);
+        ListNode newNode = removeNode2(head2, 3);
         while(newNode != null){
             System.out.print(newNode.val+" ");
             newNode = newNode.next;
