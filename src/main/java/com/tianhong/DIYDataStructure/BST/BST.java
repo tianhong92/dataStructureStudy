@@ -38,17 +38,38 @@ public class BST<E extends Comparable<E>> {
     }
 
     // 往以root为根节点的二叉树中添加元素
-    private Node add(Node root, E e){
+    private Node add(Node root, E e) {
         if(root == null){
-            root = new Node(e);
-            return root;
+            return new Node(e);
         }
-        if(e.compareTo(root.left.e) < 0){
+        if(e.compareTo(root.e) < 0){
             root.left = add(root.left, e);
-        } else if (e.compareTo(root.right.e) > 0){
+        }
+        if(e.compareTo(root.e) > 0){
             root.right = add(root.right, e);
         }
         return root;
+    }
+
+
+    // 往以root为根节点的二叉树中添加元素, 易理解版
+    private void add2(Node root, E e){
+        if(root == null) {
+            return;
+        }
+        Node leftNode = root.left;
+        Node rightNode = root.right;
+        if(root.left == null && e.compareTo(root.e) < 0){
+            root.left = new Node(e);
+        } else if(root.left != null && e.compareTo(root.e) < 0){
+            add2(root.left, e);
+        }
+
+        if(root.right == null && e.compareTo(root.e) > 0){
+            root.right = new Node(e);
+        } else if(root.right != null && e.compareTo(root.e) > 0){
+            add2(root.right, e);
+        }
     }
 
     private void print(Node root){
@@ -66,16 +87,12 @@ public class BST<E extends Comparable<E>> {
 
     public void addNodes(){
         Node node1 = new Node((E) new Integer(5));
-        Node node2 = new Node((E) new Integer(4));
-        Node node3 = new Node((E) new Integer(7));
-        Node node4 = new Node((E) new Integer(8));
-        Node node5 = new Node((E) new Integer(1));
-        add(node1);
-        add(node2);
-        add(node3);
-        add(node4);
-        add(node5);
-        print(this.root);
+        add(node1, (E) new Integer(8));
+        add(node1, (E) new Integer(4));
+        add(node1, (E) new Integer(9));
+        add(node1, (E) new Integer(2));
+        add(node1, (E) new Integer(7));
+        print(node1);
     }
 
 
