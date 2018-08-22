@@ -1,5 +1,7 @@
 package com.tianhong.DIYDataStructure.LinkedList;
 
+import com.tianhong.leetcode.removeListNode.ListNode;
+
 public class DummyHeadLinkedList<E> implements List<E> {
     private class Node {
         private E e;
@@ -49,6 +51,25 @@ public class DummyHeadLinkedList<E> implements List<E> {
         prev.next = node;
         node.next = next;
         size++;
+    }
+
+    // index: 要插入的位置
+    // prevIndex: -1;
+    // prev: prev node
+    public void add2(int index, E e, int prevIndex, Node prev){
+        if(index < 0 || index > size) {
+            throw new IllegalArgumentException("Illegal index");
+        }
+        if(prevIndex + 1 == index){
+            Node next = prev.next;
+            Node cur = new Node(e);
+            prev.next = cur;
+            cur.next = next;
+            size++;
+            return;
+
+        }
+        add2(index, e, ++prevIndex, head.next);
     }
 
     @Override
@@ -155,6 +176,8 @@ public class DummyHeadLinkedList<E> implements List<E> {
         list.set(1, 4);
         System.out.println(list);
         list.remove(1);
+        System.out.println(list);
+        list.add2(1, 7, -1, list.head);
         System.out.println(list);
     }
 }
