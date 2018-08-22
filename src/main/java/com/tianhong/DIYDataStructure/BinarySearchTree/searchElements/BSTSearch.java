@@ -48,6 +48,11 @@ public class BSTSearch<E extends Comparable> {
         }
     }
 
+    // 看二分搜索树是否包含元素e
+    public boolean contains(E e){
+        return contains(root, e);
+    }
+
     public boolean contains(Node node, E e){
         if(node == null){
             return false;
@@ -70,6 +75,6 @@ public class BSTSearch<E extends Comparable> {
         tree.add(5);
         tree.add(10);
         tree.print(tree.root);
-        System.out.println(tree.contains(tree.root, 95));
+        System.out.println(tree.contains(99));
     }
 }
