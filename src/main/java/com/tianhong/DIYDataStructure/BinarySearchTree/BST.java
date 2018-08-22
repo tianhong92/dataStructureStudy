@@ -30,6 +30,13 @@ public class BST<E extends Comparable<E>> {
 
     // 往二分查找树中添加元素
     public void add(E e){
+//        if(root == null){
+//            root = new Node(e);
+//            size++;
+//            return;
+//        } else {
+//            add2(root, e);
+//        }
         root = add(root, e);
     }
 
@@ -52,11 +59,6 @@ public class BST<E extends Comparable<E>> {
 
     // 往以root为根节点的二叉树中添加元素, 易理解版
    private void add2(Node node, E e){
-        if(node == null){
-            size++;
-            node = new Node(e);
-            return;
-        }
         if(node.left == null && e.compareTo(node.e) < 0){
             node.left = new Node(e);
             size++;
