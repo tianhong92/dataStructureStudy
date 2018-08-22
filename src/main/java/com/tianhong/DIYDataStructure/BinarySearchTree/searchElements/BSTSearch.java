@@ -53,18 +53,17 @@ public class BSTSearch<E extends Comparable> {
         return contains(root, e);
     }
 
-    public boolean contains(Node node, E e){
+    private boolean contains(Node node, E e){
         if(node == null){
             return false;
         }
         if(e.compareTo(node.e) == 0){
             return true;
+        } else if (e.compareTo(node.e) < 0) {
+            return contains(node.left, e);
+        } else {
+            return contains(node.right, e);
         }
-
-        boolean rightContains = contains(node.right, e);
-        boolean leftContains = contains(node.left, e);
-
-        return rightContains||leftContains;
     }
 
     public static void main(String[] args) {
