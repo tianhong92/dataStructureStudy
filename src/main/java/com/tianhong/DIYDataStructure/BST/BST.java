@@ -38,11 +38,11 @@ public class BST<E extends Comparable<E>> {
     }
 
     // 往以root为根节点的二叉树中添加元素
+    // 插入新元素返回跟节点
     private Node add(Node root, E e){
         if(root == null){
-            root = new Node(e);
             size++;
-            return root;
+            return  new Node(e);
         }
         if(e.compareTo(root.left.e) < 0){
             root.left = add(root.left, e);
