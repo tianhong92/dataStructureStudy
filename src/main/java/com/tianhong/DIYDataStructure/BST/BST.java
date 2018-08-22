@@ -28,14 +28,6 @@ public class BST<E extends Comparable<E>> {
         return size == 0;
     }
 
-    // 往二叉查找树中添加Node节点
-    public void add(Node node){
-        add(root, node.e);
-    }
-    // 往二分查找树中添加元素
-    public void add(E e){
-        add(root, e);
-    }
 
     // 往以root为根节点的二叉树中添加元素
     // 插入新元素返回跟节点
@@ -43,7 +35,7 @@ public class BST<E extends Comparable<E>> {
         if(root == null){
             root = new Node(e);
             size++;
-            return  root;
+            return root;
         }
         if(e.compareTo(root.left.e) < 0){
             root.left = add(root.left, e);
@@ -79,26 +71,12 @@ public class BST<E extends Comparable<E>> {
         return leftContains || rightContains;
     }
 
-    public void addNodes(){
-        Node node1 = new Node((E) new Integer(5));
-        Node node2 = new Node((E) new Integer(4));
-        Node node3 = new Node((E) new Integer(7));
-        Node node4 = new Node((E) new Integer(8));
-        Node node5 = new Node((E) new Integer(1));
-        add(node1);
-        add(node2);
-        add(node3);
-        add(node4);
-        add(node5);
-        print(this.root);
-        boolean containsOrNot = contains(node1, (E) new Integer(8));
-        System.out.println("Contains node: "+containsOrNot);
-    }
-
 
     public static void main(String[] args) {
         BST<Integer> tree = new BST<>();
-        tree.addNodes();
+        tree.add(tree.root, 6);
+        tree.print(tree.root);
+
     }
 
 }
