@@ -1,6 +1,6 @@
-package com.tianhong.DIYDataStructure.BinarySearchTree;
+package com.tianhong.DIYDataStructure.BinarySearchTree.addElements;
 
-public class BST<E extends Comparable<E>> {
+public class BSTAddElements<E extends Comparable<E>> {
     private class Node {
         public E e;
         public Node left, right;
@@ -15,7 +15,7 @@ public class BST<E extends Comparable<E>> {
     private Node root;
     private int size;
 
-    public BST() {
+    public BSTAddElements() {
         root = null;
         size = 0;
     }
@@ -89,7 +89,7 @@ public class BST<E extends Comparable<E>> {
     }
 
     public static void main(String[] args) {
-        BST<Integer> tree = new BST<>();
+        BSTAddElements<Integer> tree = new BSTAddElements<>();
         tree.add(9);
         tree.add(5);
         tree.add(2);
