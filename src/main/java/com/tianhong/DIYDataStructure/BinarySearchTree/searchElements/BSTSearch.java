@@ -57,7 +57,7 @@ public class BSTSearch<E extends Comparable> {
         if(node == null){
             return false;
         }
-        if(node.e == e){
+        if(e.compareTo(node.e) == 0){
             return true;
         }
 
