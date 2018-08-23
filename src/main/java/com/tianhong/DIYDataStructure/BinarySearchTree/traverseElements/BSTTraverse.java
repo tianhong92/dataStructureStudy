@@ -1,5 +1,7 @@
 package com.tianhong.DIYDataStructure.BinarySearchTree.traverseElements;
 
+import com.tianhong.DIYDataStructure.Stack.ArrayStack;
+
 public class BSTTraverse<E extends Comparable<E>> {
     private int size;
     private class Node{
@@ -52,6 +54,27 @@ public class BSTTraverse<E extends Comparable<E>> {
     // 中序遍历
     public void inOrder(){
         inOrder(root);
+    }
+
+    // 非递归前序遍历二叉树
+    public void preOrderNR(){
+        preOrderNR(root);
+    }
+
+    // 二分搜索树的非递归前序遍历
+    private void preOrderNR(Node node){
+        ArrayStack<Node> stack = new ArrayStack<>();
+        stack.push(root);
+        while(!stack.isEmpty()){
+            Node cur = stack.pop();
+            System.out.println(cur.e);
+            if(cur.right != null){
+                stack.push(cur.right);
+            }
+            if(cur.left != null){
+                stack.push(cur.left);
+            }
+        }
     }
 
     private void inOrder(Node node){
@@ -126,5 +149,7 @@ public class BSTTraverse<E extends Comparable<E>> {
         tree.inOrder();
         System.out.println("***************");
         tree.postOrder();
+        System.out.println("***************");
+        tree.preOrderNR();
     }
 }
