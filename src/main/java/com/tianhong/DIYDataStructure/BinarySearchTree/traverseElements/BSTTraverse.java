@@ -1,5 +1,7 @@
 package com.tianhong.DIYDataStructure.BinarySearchTree.traverseElements;
 
+import com.tianhong.DIYDataStructure.Queue.LoopQueue;
+import com.tianhong.DIYDataStructure.Queue.Queue;
 import com.tianhong.DIYDataStructure.Stack.ArrayStack;
 
 public class BSTTraverse<E extends Comparable<E>> {
@@ -63,6 +65,9 @@ public class BSTTraverse<E extends Comparable<E>> {
 
     // 二分搜索树的非递归前序遍历
     private void preOrderNR(Node node){
+        if(node == null){
+            return;
+        }
         ArrayStack<Node> stack = new ArrayStack<>();
         stack.push(root);
         while(!stack.isEmpty()){
@@ -99,6 +104,35 @@ public class BSTTraverse<E extends Comparable<E>> {
         postOrder(node.right);
         System.out.println(node.e);
     }
+
+    // 二分搜索树的层续遍历
+    public void levelOrder(){
+       levelOrder(root);
+    }
+
+    private void levelOrder(Node node){
+        if(node == null){
+            return;
+        }
+        Queue<Node> queue = new LoopQueue<>();
+        queue.enqueue(root);
+
+        while(!queue.isEmpty()){
+            int length = queue.getSize();
+            for(int i = 0; i < length; i++){
+                Node cur = queue.dequeue();
+                System.out.println(cur.e);
+                if(cur.left != null){
+                    queue.enqueue(cur.left);
+                }
+                if(cur.right != null){
+                    queue.enqueue(cur.right);
+                }
+
+            }
+        }
+    }
+
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder();
@@ -144,12 +178,6 @@ public class BSTTraverse<E extends Comparable<E>> {
         //           8      //
         //////////////////////
 
-        tree.preOrder();
-        System.out.println("***************");
-        tree.inOrder();
-        System.out.println("***************");
-        tree.postOrder();
-        System.out.println("***************");
-        tree.preOrderNR();
+       tree.levelOrder();
     }
 }
