@@ -72,9 +72,9 @@ public class BSTTraverse<E extends Comparable<E>> {
         if(node == null){
             return;
         }
+        postOrder(node.left);
         postOrder(node.right);
         System.out.println(node.e);
-        postOrder(node.left);
     }
     @Override
     public String toString() {
