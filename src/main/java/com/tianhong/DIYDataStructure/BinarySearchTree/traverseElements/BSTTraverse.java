@@ -48,6 +48,31 @@ public class BSTTraverse<E extends Comparable<E>> {
         preOrder(node.right);
     }
 
+    @Override
+    public String toString() {
+        StringBuilder res = new StringBuilder();
+        generateBSTString(root, 0, res);
+        return res.toString();
+    }
+
+    private void generateBSTString(Node node, int depth, StringBuilder res){
+        if(node == null) {
+            res.append(generateDepthString(depth)+"null\n");
+            return;
+        }
+        res.append(generateDepthString(depth)+node.e+"\n");
+        generateBSTString(node.left, depth+1, res);
+        generateBSTString(node.right, depth+1, res);
+    }
+
+    private String generateDepthString(int depth) {
+        StringBuilder res = new StringBuilder();
+        for(int i = 0; i < depth; i++){
+            res.append("--");
+        }
+        return res.toString();
+    }
+
     public static void main(String[] args) {
         BSTTraverse<Integer> tree = new BSTTraverse<>();
         tree.add(5);
@@ -68,6 +93,7 @@ public class BSTTraverse<E extends Comparable<E>> {
         //           8      //
         //////////////////////
 
-        tree.preOrder();
+        //tree.preOrder();
+        System.out.println(tree);
     }
 }
