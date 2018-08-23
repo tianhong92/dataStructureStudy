@@ -133,6 +133,50 @@ public class BSTTraverse<E extends Comparable<E>> {
         }
     }
 
+    // 寻找二分搜索树最小元素
+    public E minimum(){
+        if(size == 0){
+            return null;
+        }
+        if(size == 1){
+            return root.e;
+        }
+        return minimum(root);
+    }
+
+    private E minimum(Node node){
+        if(node.left == null){
+            return node.e;
+        }
+        return minimum(node.left);
+    }
+
+    public Node deleteMinimum(){
+        if(size == 0 || size == 1){
+            root = null;
+            size = 0;
+            return null;
+        }
+
+        return deleteMinimum(root);
+    }
+
+    private Node deleteMinimum(Node node){
+        if(node.left == null && node.right == null){
+            node = null;
+            return null;
+        } else if (node.left == null && node.right != null){
+            Node right = node.right;
+            node = null;
+            return right;
+        }
+
+        Node ret = deleteMinimum(node.left);
+        node.left = ret;
+        size--;
+        return node;
+    }
+
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder();
@@ -178,6 +222,9 @@ public class BSTTraverse<E extends Comparable<E>> {
         //           8      //
         //////////////////////
 
-       tree.levelOrder();
+
+        System.out.println("Minimum is: "+tree.minimum());
+        tree.deleteMinimum();
+        tree.preOrder();
     }
 }
