@@ -14,6 +14,7 @@ public class BSTAddElements<E extends Comparable<E>> {
 
     private Node root;
     private int size;
+    private int depth;
 
     public BSTAddElements() {
         root = null;
@@ -30,13 +31,6 @@ public class BSTAddElements<E extends Comparable<E>> {
 
     // 往二分查找树中添加元素
     public void add(E e){
-//        if(root == null){
-//            root = new Node(e);
-//            size++;
-//            return;
-//        } else {
-//            add2(root, e);
-//        }
         root = add(root, e);
     }
 
