@@ -162,10 +162,7 @@ public class BSTTraverse<E extends Comparable<E>> {
     }
 
     private Node deleteMinimum(Node node){
-        if(node.left == null && node.right == null){
-            node = null;
-            return null;
-        } else if (node.left == null && node.right != null){
+        if (node.left == null){
             Node right = node.right;
             node = null;
             return right;
@@ -175,6 +172,43 @@ public class BSTTraverse<E extends Comparable<E>> {
         node.left = ret;
         size--;
         return node;
+    }
+
+    public Node delete(E e){
+        return delete(root, e);
+    }
+
+    private Node delete(Node node, E e){
+        if(node == null){
+            return null;
+        }
+        if(e.compareTo(node.e) < 0){
+            node.left = delete(node.left, e);
+            return node;
+        } else if (e.compareTo(node.e) > 0){
+            node.right = delete(node.right, e);
+            return node;
+        } else { // if e == node.e
+            if(node.right == null){
+                Node left = node.left;
+                node = left;
+                return node;
+            }
+            if(node.left == null){
+                Node right = node.right;
+                node = right;
+                return  node;
+            }
+
+            Node successor = new Node(minimum(node.right));
+            Node right = deleteMinimum(node.right);
+            successor.left = node.left;
+            successor.right = right;
+            return  successor;
+
+        }
+
+
     }
 
     @Override
@@ -224,7 +258,7 @@ public class BSTTraverse<E extends Comparable<E>> {
 
 
         System.out.println("Minimum is: "+tree.minimum());
-        tree.deleteMinimum();
+        tree.delete(9);
         tree.preOrder();
     }
 }
