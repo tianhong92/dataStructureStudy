@@ -192,11 +192,13 @@ public class BSTTraverse<E extends Comparable<E>> {
             if(node.right == null){
                 Node left = node.left;
                 node = left;
+                size--;
                 return node;
             }
             if(node.left == null){
                 Node right = node.right;
                 node = right;
+                size--;
                 return  node;
             }
 
@@ -207,8 +209,6 @@ public class BSTTraverse<E extends Comparable<E>> {
             return  successor;
 
         }
-
-
     }
 
     @Override
