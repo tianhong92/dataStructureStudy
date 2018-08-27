@@ -1,9 +1,8 @@
 package com.tianhong.leetcode.linkedListQuestions;
 
-import java.util.*;
-
 // Input: 1->2->4, 1->3->4
 // Output: 1->1->2->3->4->4
+//TODO how to improve efficiency
 public class MergeTwoSortedList {
     private class ListNode {
         int val;
