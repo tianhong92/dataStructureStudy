@@ -8,30 +8,48 @@ public class RemoveDups {
     private class ListNode {
         int val;
         ListNode next;
+        public ListNode(int val){
+            this.val = val;
+            this.next = null;
+        }
         public ListNode(int val, ListNode node){
             this.val = val;
             this.next = node;
         }
     }
 
+    // 使用hashset记录不重复的node， 效率比较低
     public ListNode deleteDuplicates(ListNode head) {
         if(head == null){
             return head;
         }
         HashSet<Integer> hSet = new HashSet<>();
         hSet.add(head.val);
-        ListNode newHead = new ListNode(head.val, null);
-        ListNode cur = newHead;
+        ListNode cur = new ListNode(head.val);
+        ListNode newHead = cur;
+
         while(head.next != null){
             if(!hSet.contains(head.next.val)){
-                newHead.next = new ListNode(head.next.val, null);
-                newHead = newHead.next;
+                cur.next = new ListNode(head.next.val);
+                cur = cur.next;
                 hSet.add(head.next.val);
             }
             head = head.next;
         }
         return newHead;
     }
+
+    // 利用以前以后两个指针的方式， 如果两个指针指向的节点值相等，
+    // 则移动后一个指针直到值不一样。 然后前一个指针指向后一个指针。
+    public ListNode deleteDuplicates2(ListNode head){
+        if(head == null || head.next == null){
+            return head;
+        }
+        ListNode cur1 = head;
+        ListNode cur2 = head.next;
+
+    }
+
 
     public static void main(String[] args) {
         RemoveDups test = new RemoveDups();
