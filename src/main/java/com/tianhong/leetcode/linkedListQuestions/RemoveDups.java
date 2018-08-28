@@ -42,18 +42,30 @@ public class RemoveDups {
     // 利用以前以后两个指针的方式， 如果两个指针指向的节点值相等，
     // 则移动后一个指针直到值不一样。 然后前一个指针指向后一个指针。
     public ListNode deleteDuplicates2(ListNode head){
-        if(head == null || head.next == null){
+        if(head == null || head.next == null)
             return head;
-        }
-        ListNode cur1 = head;
-        ListNode cur2 = head.next;
 
+        ListNode prev = head;
+        ListNode p = head.next;
+
+        while(p != null){
+            if(p.val == prev.val){
+                prev.next = p.next;
+                p = p.next;
+                //no change prev
+            }else{
+                prev = p;
+                p = p.next;
+            }
+        }
+
+        return head;
     }
 
 
     public static void main(String[] args) {
         RemoveDups test = new RemoveDups();
-        ListNode node5 = test.new ListNode(5, null);
+        ListNode node5 = test.new ListNode(2, null);
         ListNode node4 = test.new ListNode(6, node5);
         ListNode node3 = test.new ListNode(2, node4);
         ListNode node2 = test.new ListNode(2, node3);
