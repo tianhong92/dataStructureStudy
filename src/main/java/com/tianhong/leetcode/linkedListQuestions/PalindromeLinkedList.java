@@ -4,6 +4,8 @@ import java.util.Stack;
 
 // Input: 1->2 Output: false
 // Input: 1->2->2->1 Output: true
+// Input: 1->1->0 Output: false
+// Input: 1->0->1 Output: true
 public class PalindromeLinkedList {
     private class ListNode {
         private int val;
@@ -22,9 +24,6 @@ public class PalindromeLinkedList {
         if(head == null || head.next == null){
             return true;
         }
-        if(head.val == head.next.val){
-            return true;
-        }
         Stack stack = new Stack();
         ListNode slow = head;
         ListNode quick = head;
@@ -33,6 +32,9 @@ public class PalindromeLinkedList {
             slow = slow.next;
             quick = quick.next.next;
             stack.push(slow.val);
+        }
+        if(quick.next == null){
+            stack.pop();
         }
         while(slow.next != null){
             slow = slow.next;
@@ -45,12 +47,11 @@ public class PalindromeLinkedList {
 
     public static void main(String[] args) {
         PalindromeLinkedList test = new PalindromeLinkedList();
-        ListNode node6 = test.new ListNode(6, null);
-        ListNode node5 = test.new ListNode(4, node6);
-        ListNode node4 = test.new ListNode(3, node5);
-        ListNode node3 = test.new ListNode(3, node4);
-        ListNode node2 = test.new ListNode(4, node3);
-        ListNode node1 = test.new ListNode(6, node2);
+
+        ListNode node4 = test.new ListNode(1, null);
+        ListNode node3 = test.new ListNode(2, node4);
+        ListNode node2 = test.new ListNode(1, node3);
+        ListNode node1 = test.new ListNode(1, node2);
 
         System.out.println(test.isPalindrome(node1));
 
