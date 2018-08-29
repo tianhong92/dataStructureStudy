@@ -1,6 +1,6 @@
 package com.tianhong.leetcode;
 
-public class JewelsAndStrones {
+public class JewelsAndStones {
     public static int jewelsCount(String J, String S) {
         char[] jewels = S.toCharArray();
         int count = 0;
