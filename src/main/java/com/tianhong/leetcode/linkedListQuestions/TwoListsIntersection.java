@@ -56,13 +56,22 @@ public class TwoListsIntersection {
         }
         boolean cur1HasLinkedToCur2 = false;
         boolean cur2HasLinkedToCur1 = false;
-        while(cur1 != cur2){
-            if(cur1 == null && cur1HasLinkedToCur2 && cur2 != null && cur2HasLinkedToCur1){
+        while(cur1 != null && cur2 != null && cur1 != cur2){
+            if(cur1.next == null && !cur1HasLinkedToCur2){
                 cur1 = headB;
+                cur1HasLinkedToCur2 = true;
+            } else {
+                cur1 = cur1.next;
+            }
+
+            if(cur2.next == null && !cur2HasLinkedToCur1){
+                cur2 = headA;
+                cur2HasLinkedToCur1 = true;
+            } else {
                 cur2 = cur2.next;
             }
-            if(cur2 == null && cur2HasLinkedToCur1 && cur1 != null && !cur1HasLinkedToCur2)
         }
+        return cur1;
     }
 
     public static void main(String[] args) {
@@ -90,7 +99,7 @@ public class TwoListsIntersection {
 //            cur2 = cur2.next;
 //        }
 
-        ListNode ret = test.getIntersectionNode(cur1, cur2);
+        ListNode ret = test.getIntersectionNode2(cur1, cur2);
         System.out.println("ret: "+ret.val);
     }
 }
