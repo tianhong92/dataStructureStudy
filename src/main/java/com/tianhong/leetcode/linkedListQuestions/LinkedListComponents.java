@@ -19,9 +19,9 @@ public class LinkedListComponents {
     }
 
     // 首先遍历原List得到所有connected对存入
-    public int numComponents(ListNode head, int[] G) {
-
-    }
+//    public int numComponents(ListNode head, int[] G) {
+//
+//    }
 
     public static void main(String[] args) {
 
