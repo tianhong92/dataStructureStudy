@@ -37,7 +37,7 @@ public class FileOperation {
             return false;
         }
 
-        // 简单分词
+        // 简单分词 - 没有考虑自然语言词性， 语态等
         // 这个分词方式相对简陋, 没有考虑很多文本处理中的特殊问题
         // 在这里只做demo展示用
         if (scanner.hasNextLine()) {
