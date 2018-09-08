@@ -142,6 +142,19 @@ public class DummyHeadLinkedList<E> implements List<E> {
         return cur.e;
     }
 
+    public void removeElement(E e){
+        Node prev = head;
+        if(prev.next == null)
+            return;
+        while(prev.next != null){
+            if(prev.next.e.equals(e)){
+                prev.next = prev.next.next;
+                size--;
+            }
+            prev = prev.next;
+        }
+    }
+
     public E removeFirst() {
         return remove(0);
     }
@@ -175,9 +188,7 @@ public class DummyHeadLinkedList<E> implements List<E> {
         System.out.println(list);
         list.set(1, 4);
         System.out.println(list);
-        list.remove(1);
-        System.out.println(list);
-        list.add2(1, 7, -1, list.head);
+        list.removeElement(4);
         System.out.println(list);
     }
 }
