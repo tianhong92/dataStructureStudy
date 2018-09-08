@@ -66,4 +66,11 @@ public class FileOperation {
                 return i;
         return s.length();
     }
+
+    public static void main(String[] args) throws IOException {
+        File file = new File("src/pride-and-prejudice.txt");
+        System.out.println(file.exists());
+        System.out.println(System.getProperty("user.dir"));
+    }
+
 }
