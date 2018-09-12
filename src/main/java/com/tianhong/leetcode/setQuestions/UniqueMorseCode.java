@@ -20,7 +20,7 @@ public class UniqueMorseCode {
         for(int i = 0; i < 26; i++){
             map.put(codes[i], letters[i]);
         }
-        String[] words = new String[]{"dsf", "efdd", "qqq", "eret"};
+        String[] words = new String[]{"dsf", "efdd", "qqq", "qqq"};
         for(String word : words){
             char[] charArray =  word.toCharArray();
             String temp = "";
