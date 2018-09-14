@@ -14,18 +14,16 @@ public class UniqueMorseCode {
         String[] codes = new String[]{".-","-...","-.-.","-..",".","..-.","--.","....",
                 "..",".---","-.-",".-..","--","-.","---", ".--.","--.-",".-.","...","-",
                 "..-","...-",".--","-..-","-.--","--.."};
-        String[] letters = new String[]{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
-                "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
         HashMap<String, String> map = new HashMap<>();
         for(int i = 0; i < 26; i++){
-            map.put(codes[i], letters[i]);
+            map.put(String.valueOf(i), codes[i]);
         }
         String[] words = new String[]{"dsf", "efdd", "qqq", "qqq"};
         for(String word : words){
             char[] charArray =  word.toCharArray();
             String temp = "";
             for(char c : charArray){
-                map.get(c);
+                map.get(c-'a');
                 temp += c;;
             }
             set.add(temp);
