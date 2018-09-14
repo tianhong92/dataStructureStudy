@@ -2,21 +2,22 @@ package com.tianhong.leetcode.mapQuestions;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.TreeMap;
 
 // input: num1 = [1, 2, 2, 6, 1]; num2 = [2, 2]
 // output: [2, 2]
 public class TwoArrayDupIntersection {
-    public static int[] intersect(int[] num1, int[] num2){
-        HashMap<Integer, Integer> map = new HashMap<>();
+    public static int[] intersect(int[] nums1, int[] nums2){
+        TreeMap<Integer, Integer> map = new TreeMap<>();
         ArrayList<Integer> list = new ArrayList<>();
-        for(int num : num1){
+        for(int num : nums1){
             if(!map.containsKey(num)){
                 map.put(num, 1);
             } else {
                 map.put(num, map.get(num) + 1);
             }
         }
-        for(int num : num2){
+        for(int num : nums2){
             if(map.containsKey(num)){
                 list.add(num);
                 if(map.get(num) == 1){
@@ -32,12 +33,11 @@ public class TwoArrayDupIntersection {
             ret[i] = list.get(i);
         }
         return ret;
-
     }
 
     public static void main(String[] args) {
-        int[] num1 = {1, 2, 2, 2, 6, 1};
-        int[] num2 = {1, 1, 2, 2, 2};
+        int[] num1 = { 1, 2, 2, 2, 6, 1 };
+        int[] num2 = { 1, 1, 2, 2, 2 };
         int[] ret = intersect(num1, num2);
         System.out.print("[ ");
         for(int i = 0; i < ret.length; i++){
