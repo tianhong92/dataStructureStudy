@@ -46,10 +46,52 @@ public class MaxHeap<E extends Comparable<E>> {
 
     private void siftUp(int k){
         while(k > 0 && data.get(parent(k)).compareTo(data.get(k)) < 0){
-            E temp = data.get(parent(k));
-            data.set(parent(k), data.get(k));
-            data.set(k, temp);
+            data.swap(k, parent(k));
             k = parent(k);
+        }
+    }
+
+    private void siftDown(int k){
+        while(leftChild(k) < data.getSize()){
+            int j = leftChild(k);
+            if(j + 1 < data.getSize() && data.get(j+1).compareTo(data.get(j)) > 0)
+                j = rightChild(k);
+            // data[j] 是leftChild和rightChild中最大的值
+            if(data.get(k).compareTo(data.get(j)) >=0)
+                break;
+            data.swap(k, j);
+            k = j;
+        }
+    }
+
+    // 看堆中最大元素是谁
+    public E findMax(){
+        if(data.getSize() == 0)
+            throw new IllegalArgumentException("Can not find max when heap is empty");
+        return data.get(0);
+    }
+
+    // 取出堆中的最大元素
+    public E extractMax(){
+        E ret = findMax();
+        data.swap(0, data.getSize() - 1);
+        data.removeLast();
+        siftDown(0);
+        return ret;
+    }
+
+    // 取出堆中最大元素， 并且替换为元素e
+    public E replace(E e){
+        E ret = findMax();
+        data.set(0, e);
+        siftDown(0);
+        return ret;
+    }
+
+    public MaxHeap(E[] arr){
+        data = new Array<>(arr);
+        for(int i = parent(arr.length - 1); i >= 0; i--){
+            siftDown(i);
         }
     }
 }
