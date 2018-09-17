@@ -12,6 +12,7 @@ public class TopFrequentElements {
             this.e = e;
             this.freq = freq;
         }
+        // 方法1： 实现compareTo
 //        @Override
 //        public int compareTo(Freq another){
 //            if(this.freq < another.freq)
@@ -23,13 +24,13 @@ public class TopFrequentElements {
 //        }
     }
 
-    // 使用比较器
-    private class FreqComparator implements Comparator<Freq> {
-        @Override
-        public int compare(Freq a, Freq b) {
-            return a.freq - b.freq;
-        }
-    }
+    // 方法2， 使用比较器
+//    private class FreqComparator implements Comparator<Freq> {
+//        @Override
+//        public int compare(Freq a, Freq b) {
+//            return a.freq - b.freq;
+//        }
+//    }
     public List<Integer> topKFrequent(int[] nums, int k) {
         // 计算得到带frequency的map
         TreeMap<Integer, Integer> map = new TreeMap<>();
@@ -40,8 +41,13 @@ public class TopFrequentElements {
                 map.put(num, 1);
             }
         }
-        // 存储Freq对象到优先队列， ferq小的优先级高， 队列满了之后优先被替换
-        PriorityQueue<Freq> queue = new PriorityQueue<>(new FreqComparator());
+        //  方法3， 使用匿名类
+        PriorityQueue<Freq> queue = new PriorityQueue<>(new Comparator<Freq>() {
+            @Override
+            public int compare(Freq a, Freq b) {
+                return a.freq - b.freq;
+            }
+        });
         for(int key : map.keySet()){
             if(queue.size() < k){
                 queue.add(new Freq(key, map.get(key)));
