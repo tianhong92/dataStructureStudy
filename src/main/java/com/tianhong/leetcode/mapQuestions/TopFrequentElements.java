@@ -1,54 +1,59 @@
 package com.tianhong.leetcode.mapQuestions;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.TreeMap;
+import java.util.*;
 // Input: nums = [1,1,1,2,2,3], k = 2
 // Output: [1,2]
 
 public class TopFrequentElements {
-    private class Freq implements Comparable<Freq> {
+    private class Freq {
         public int e, freq;
-        // 频次越低， 优先级越高
+        // 频次越低， 优先级越高, 这样队列满了会先被删除
         public Freq(int e, int freq){
             this.e = e;
             this.freq = freq;
         }
+//        @Override
+//        public int compareTo(Freq another){
+//            if(this.freq < another.freq)
+//                return 1;
+//            else if(this.freq > another.freq)
+//                return -1;
+//            else
+//                return 0;
+//        }
+    }
+
+    // 使用比较器
+    private class FreqComparator implements Comparator<Freq> {
         @Override
-        public int compareTo(Freq another){
-            if(this.freq < another.freq)
-                return 1;
-            else if(this.freq > another.freq)
-                return -1;
-            else
-                return 0;
-        }
-        public int getFreq(){
-            return this.freq;
+        public int compare(Freq a, Freq b) {
+            return a.freq - b.freq;
         }
     }
     public List<Integer> topKFrequent(int[] nums, int k) {
+        // 计算得到带frequency的map
         TreeMap<Integer, Integer> map = new TreeMap<>();
         for(int num : nums){
-            if(map.containsKey(num))
-                map.put(num, map.get(num) + 1);
-            else
+            if(map.containsKey(num)){
+                map.put(num, map.get(map) + 1);
+            } else {
                 map.put(num, 1);
-        }
-        PriorityQueue<Freq> pq = new PriorityQueue<>();
-        for(int key : map.keySet()){
-            if(pq.size() < k)
-                pq.add(new Freq(key, map.get(key)));
-            else if(map.get(key) > pq.peek().freq) {
-                pq.remove();
-                pq.add(new Freq(key, map.get(key)));
             }
         }
-        LinkedList<Integer> res = new LinkedList<>();
-        while(!pq.isEmpty()){
-            res.add(pq.remove().e);
+        // 存储Freq对象到优先队列， ferq小的优先级高， 队列满了之后优先被替换
+        PriorityQueue<Freq> queue = new PriorityQueue<>(new FreqComparator());
+        for(int key : map.keySet()){
+            if(queue.size() < k){
+                queue.add(new Freq(key, map.get(key)));
+            } else if (map.get(key) > queue.peek().freq) {
+                queue.remove();
+                queue.add(new Freq(key, map.get(key)));
+            }
         }
-        return res;
+        LinkedList<Integer> list = new LinkedList<>();
+        while(!queue.isEmpty()){
+            list.add(queue.remove().e);
+        }
+        return list;
     }
 }
