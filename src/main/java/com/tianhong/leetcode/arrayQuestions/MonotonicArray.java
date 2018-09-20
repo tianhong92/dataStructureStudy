@@ -21,4 +21,43 @@ public class MonotonicArray {
         }
         return true;
     }
+
+    public boolean isMonotonic2(int[] A){
+        return increasing(A) || decreasing(A);
+    }
+
+    public boolean increasing(int[] A){
+        for(int i = 0; i < A.length - 1; i++){
+            if(A[i+1] < A[i])
+                return false;
+        }
+        return true;
+    }
+
+    public boolean decreasing(int[] A){
+        for(int i = 0; i < A.length - 1; i++){
+            if(A[i+1] > A[i])
+                return false;
+        }
+        return true;
+    }
+
+    // One pass
+    public boolean isMonotonic3(int[] A){
+        int store = 0;
+        for(int i = 0; i < A.length - 1; i++){
+            int temp = Integer.compare(A[i+1], A[i]);
+            if(store != 0 && temp != store && temp != 0)
+                return false;
+            if(temp != 0)
+                store = temp;
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        MonotonicArray array = new MonotonicArray();
+        int[] test = new int[]{1,2,2,3};
+        boolean rst = array.isMonotonic3(test);
+    }
 }
