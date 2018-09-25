@@ -1,4 +1,4 @@
-package com.tianhong.leetcode;
+package com.tianhong.leetcode.stackQuestions;
 
 import com.tianhong.DIYDataStructure.Stack.ArrayStack;
 import com.tianhong.DIYDataStructure.Stack.Stack;

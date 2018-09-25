@@ -1,4 +1,4 @@
-package com.tianhong.leetcode;
+package com.tianhong.leetcode.linkedListQuestions;
 
 import java.util.ArrayList;
 import java.util.Arrays;

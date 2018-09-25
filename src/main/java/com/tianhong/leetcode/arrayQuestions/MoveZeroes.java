@@ -11,7 +11,7 @@ public class MoveZeroes {
         int n = 0;
         while(i < nums.length){
             if(nums[k] == 0){
-                for(int j = k; j < nums.length - n - 1; j++){
+                    for(int j = k; j < nums.length - n - 1; j++){
                     nums[j] = nums[j+1];
                 }
                 nums[nums.length - n - 1] = 0;

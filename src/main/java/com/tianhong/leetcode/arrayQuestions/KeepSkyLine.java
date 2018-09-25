@@ -1,4 +1,4 @@
-package com.tianhong.leetcode;
+package com.tianhong.leetcode.arrayQuestions;
 
 //Max Increase to Keep City Skyline
 

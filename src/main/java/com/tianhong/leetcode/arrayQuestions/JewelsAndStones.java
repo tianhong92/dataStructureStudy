@@ -1,4 +1,4 @@
-package com.tianhong.leetcode;
+package com.tianhong.leetcode.arrayQuestions;
 
 public class JewelsAndStones {
     public static int jewelsCount(String J, String S) {

@@ -1,4 +1,4 @@
-package com.tianhong.leetcode;
+package com.tianhong.leetcode.treeQuestions;
 
 public class BinaryTreePruning {
 
