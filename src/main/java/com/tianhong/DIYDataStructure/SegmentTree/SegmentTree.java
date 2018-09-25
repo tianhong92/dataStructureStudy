@@ -62,6 +62,12 @@ public class SegmentTree<E> {
         return res.toString();
     }
 
+    public void set(int index, E e){
+        if(index < 0 || index >= data.length  )
+            throw  new IllegalArgumentException("Index is illegal.");
+        data[index] = e;
+    }
+
     // 返回区间[queryL, queryR]的值
     public E query(int queryL, int queryR){
         if(queryL < 0 || queryL >= data.length || queryR < 0 || queryR >= data.length
