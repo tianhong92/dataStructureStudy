@@ -124,10 +124,17 @@
 * 红黑树与2-3树
 
 * HashTable
-哈希表充分体现了： 空间换时间
-哈希函数设计： “键”通过哈希函数得到的“索引”分布越均匀越好
-Java中的hashcode
-Object类默认的hashcode是根据每个对象地址计算hash值
+    哈希表充分体现了： 空间换时间
+    哈希函数设计： “键”通过哈希函数得到的“索引”分布越均匀越好
+    Java中的hashcode
+    Object类默认的hashcode是根据每个对象地址计算hash值
+    还需要Override equals方法， 当hash冲突时。
+    哈希冲突的处理： 链地址法（Seperate Chaining）， 数组的每个位置就是一个查找表
+    Java8之前， 每一个位置对应一个链表
+    Java8之前， 当hash冲突达到一定程度每一个位置转为红黑树
+    hashCode(k) & 0x7fffffff 就是最高为变为0（正数）， 其它位不变
+    hash碰撞攻击, 了解hash算法之后， 精心设计都会碰撞的数据， 时间复杂度O(n)
+    数组可以resize， N/M(当前地址数) >= upperTol
 
 ### 使用泛型
 * 让数据结构能放置“任何”数据类型
