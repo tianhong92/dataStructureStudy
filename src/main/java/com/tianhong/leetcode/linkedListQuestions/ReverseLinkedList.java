@@ -31,9 +31,9 @@ public class ReverseLinkedList {
             return head;
         }
         ListNode newHead = reverseList2(head.next);
-        ListNode preHead = head;
+
         head.next.next = head;
-        preHead.next = null;
+        head.next = null;
         return newHead;
     }
 

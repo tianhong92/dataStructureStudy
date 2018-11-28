@@ -20,7 +20,7 @@ package com.tianhong.Jianzhi;
 //  Given target = 5, return true.
 //  Given target = 20, return false.
 
-public class TwoDArraySearch {
+public class Re4TwoDArraySearch {
     public static boolean Find(int target, int[][] matrix) {
         return IncludeTarget(matrix, matrix.length - 1, 0, target);
     }
