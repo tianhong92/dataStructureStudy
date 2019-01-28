@@ -44,7 +44,7 @@ public class Le977Squares {
             return array;
         }
         if(array[pos-1] <= target){
-            for(int g = taken; g > pos-1; g--){
+            for(int g = taken; g > pos; g--){
                 array[g] = array[g-1];
             }
             array[pos] = target;
@@ -56,7 +56,7 @@ public class Le977Squares {
 
     public static void main(String[] args) {
         int[] test = new int[]{3, -1, 0, 5, 7, 6};
-        int[] rst = sortedSquares2(test);
+        int[] rst = sortedSquares(test);
         for(int i = 0; i < rst.length; i++){
             if(i == rst.length - 1){
                 System.out.println(rst[i]);
