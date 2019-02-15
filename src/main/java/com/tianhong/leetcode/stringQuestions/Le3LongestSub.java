@@ -61,8 +61,11 @@ public class Le3LongestSub {
     private boolean uniqueCheck(char[] s, int start, int end){
         HashSet<Character> set = new HashSet<>();
         for(int i = start; i <= end; i++){
-            if(!set.add(s[i])){
+            Character c = s[i];
+            if(set.contains(c)){
                 return false;
+            } else {
+                set.add(c);
             }
         }
         return true;
