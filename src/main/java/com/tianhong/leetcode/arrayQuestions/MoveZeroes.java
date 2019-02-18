@@ -42,7 +42,6 @@ public class MoveZeroes {
 
     // swap
     public static void solution3(int[] nums){
-        int start = 0;
         for(int i = 0; i < nums.length; i++){
             if(nums[i] == 0){
                 for(int j = i + 1; j < nums.length; j++){
