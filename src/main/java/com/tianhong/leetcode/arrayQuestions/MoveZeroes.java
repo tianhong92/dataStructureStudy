@@ -28,6 +28,8 @@ public class MoveZeroes {
     public static void main(String[] args) {
         int[] test = new int[]{ 0, 0, 1, 2, 0, 5};
         moveZeroes(test);
-        System.out.println("end");
+        for(int i = 0; i < test.length; i++){
+            System.out.print(test[i]+" ");
+        }
     }
 }
