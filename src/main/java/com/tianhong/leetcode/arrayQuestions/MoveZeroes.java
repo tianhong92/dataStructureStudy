@@ -25,9 +25,45 @@ public class MoveZeroes {
         }
     }
 
+    // move forward not-0 elements
+    public static void solution2(int[] nums){
+        int start = 0;
+
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] != 0){
+                nums[start++] = nums[i];
+            }
+        }
+
+        for(int j = start; j < nums.length; j++){
+            nums[j] = 0;
+        }
+    }
+
+    // swap
+    public static void solution3(int[] nums){
+        int start = 0;
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] == 0){
+                for(int j = i + 1; j < nums.length; j++){
+                    if(nums[j] != 0){
+                        swap(nums, i, j);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    private static void swap(int[] nums, int start, int end){
+        int temp = nums[start];
+        nums[start] = nums[end];
+        nums[end] = temp;
+    }
+
     public static void main(String[] args) {
         int[] test = new int[]{ 0, 0, 1, 2, 0, 5};
-        moveZeroes(test);
+        solution3(test);
         for(int i = 0; i < test.length; i++){
             System.out.print(test[i]+" ");
         }
