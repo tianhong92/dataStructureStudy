@@ -62,6 +62,26 @@ public class Le167TwoSum2 {
         }
     }
 
+    // Solution 3: 对撞指针
+    public int[] twoSum3(int[] numbers, int target){
+        if(numbers.length < 2){
+            throw new IllegalArgumentException("Array is too short!");
+        }
+        int i = 0;
+        int j = numbers.length - 1;
+        while(i < j){
+            int sum = numbers[i] + numbers[j];
+            if(sum == target){
+                return new int[]{i+1, j+1};
+            } else if (sum < target){
+                i++;
+            } else {
+                j--;
+            }
+        }
+        throw new IllegalArgumentException("Not valid parameter!");
+    }
+
     public static void main(String[] args) {
         int[] arr = new int[]{5, 25, 75};
         Le167TwoSum2 test = new Le167TwoSum2();
