@@ -28,4 +28,44 @@ public class Le167TwoSum2 {
         }
         return index;
     }
+
+    // binary search
+    public int[] twoSum2(int[] numbers, int target){
+        int[] index = new int[2];
+        for(int i = 0; i < numbers.length; i++){
+            int search = target - numbers[i];
+            int ret = binarySearch(numbers, i+1, numbers.length-1, search);
+            if(ret != -1){
+                index[0] = i+1;
+                index[1] = ret+1;
+                break;
+            }
+        }
+        return index;
+    }
+
+    public int binarySearch(int[] nums, int start, int end, int target){
+        if(start > end){
+            return -1;
+        }
+        if(start == end && nums[start] == target){
+            return start;
+        }
+        int mid = (start + end)/2;
+
+        if(nums[mid] == target){
+            return mid;
+        } else if (nums[mid] < target){
+            return binarySearch(nums, mid + 1, end, target);
+        } else {
+            return binarySearch(nums, start, mid - 1, target);
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] arr = new int[]{5, 25, 75};
+        Le167TwoSum2 test = new Le167TwoSum2();
+        int[] ret = test.twoSum2(arr, 100);
+        System.out.println("first: "+ret[0]+" second: "+ret[1]);
+    }
 }
