@@ -34,10 +34,35 @@ public class Le209MinimumSizeSubarraySum {
         return length;
     }
 
+    //real滑动窗口
+    public int minSubArrayLen2(int s, int[] nums) {
+        if(nums.length == 0){
+            return 0;
+        }
+        int l = 0, r = -1; // 滑动窗口[l, r]
+        int sum = 0;
+        int length = nums.length + 1;
+        while(l < nums.length && r < nums.length){
+            if(r+1 < nums.length && sum < s){
+                sum += nums[++r];
+            } else {
+                sum -= nums[l++];
+            }
+
+            if(sum >= s && (r - l + 1) < length){
+                length = (r - l + 1);
+            }
+        }
+        if(length == nums.length + 1)
+            return 0;
+        else
+            return length;
+    }
+
     public static void main(String[] args) {
-        int[] array = new int[] {1, 4, 5};
+        int[] array = new int[] {1, 4, 5, 8, 7};
         Le209MinimumSizeSubarraySum test = new Le209MinimumSizeSubarraySum();
-        int ret = test.minSubArrayLen(11, array);
+        int ret = test.minSubArrayLen2(16, array);
         System.out.println(ret);
     }
 }
