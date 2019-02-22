@@ -36,10 +36,10 @@ public class Le438FindAnagramsInString {
         return list;
     }
 
-    public boolean isAnagramString(String a, int[] freq){
+    public boolean isAnagramString(String a, int[] f){
         for(char c : a.toCharArray()){
-            freq[(int)c]--;
-            if(freq[(int)c] < 0){
+            f[(int)c]--;
+            if(f[(int)c] < 0){
                 return false;
             }
         }
