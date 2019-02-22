@@ -10,6 +10,7 @@ import java.util.List;
 public class Le3LongestSubstringWithoutDup {
     //滑动窗口法
     public int lengthOfLongestSubstring(String s) {
+        int[] freq = new int[256];
         char[] chars = s.toCharArray();
         if(chars.length <= 1){
             return chars.length;
@@ -19,11 +20,14 @@ public class Le3LongestSubstringWithoutDup {
         int length = 1;
         List<Character> list = new ArrayList<Character>();
         list.add(chars[l]);
+        freq[(int)chars[l]]++;
         while(l < chars.length && r < chars.length){
-            if(r+1 < chars.length && !list.contains(chars[r+1])){
+            if(r+1 < chars.length && freq[(int)chars[r+1]] == 0){
                 list.add(chars[++r]);
+                freq[(int)chars[r]] = 1;
             } else {
                 list.remove(0);
+                freq[(int)chars[l]] = 0;
                 l++;
             }
             if(list.size() > length){
