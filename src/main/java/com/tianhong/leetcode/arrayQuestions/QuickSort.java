@@ -11,6 +11,7 @@ package com.tianhong.leetcode.arrayQuestions;
 // 基准点选择会影响效率
 public class QuickSort {
 
+    // O(n)
     public static int partition(int[] nums, int start, int end){
         if(start >= end){
             return start;
@@ -31,7 +32,7 @@ public class QuickSort {
     }
 
 
-
+    // O(logn)
     public static int[] sort(int[] nums, int start, int end){
         if(start >= end){
             return nums;
