@@ -36,4 +36,11 @@ public class Le350IntersectionOfTwoArrays {
         return ret;
     }
 
+    public static void main(String[] args) {
+        Map<Integer, Integer> map = new HashMap<>();
+        map.put(1, 4);
+        map.put(1, 6);
+        System.out.println(map.size());
+    }
+
 }
