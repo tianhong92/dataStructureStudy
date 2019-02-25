@@ -1,9 +1,6 @@
 package com.tianhong.leetcode.setQuestions;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 // Given two arrays, write a function to compute their intersection.
 // Input: nums1 = [1,2,2,1], nums2 = [2,2]
@@ -15,24 +12,35 @@ import java.util.Set;
 // The result can be in any order.
 public class Le349IntersectionOfTwoArrays {
     public int[] intersection(int[] nums1, int[] nums2) {
-        int length = nums1.length > nums2.length ? nums1.length : nums2.length;
-        List<Integer> list = new ArrayList<>();
         Set<Integer> set = new HashSet<>();
+        Set ret = new HashSet<>();
         for(int i : nums1){
             set.add(i);
         }
         for(int j = 0; j < nums2.length; j++){
             if(set.contains(nums2[j])){
-                list.add(nums2[j]);
-                set.remove(nums2[j]);
+                ret.add(nums2[j]);
             }
         }
-
-        int[] ret = new int[list.size()];
-        for(int k = 0; k < list.size(); k++){
-            ret[k] = list.get(k);
+        int k = 0;
+        int[] arr = new int[ret.size()];
+        for (Iterator it = ret.iterator(); it.hasNext(); ) {
+            arr[k] = (int)it.next();
+            k++;
         }
-        return ret;
+        return arr;
+    }
+
+    public static void main(String[] args) {
+//        Integer[] numbers = {7, 7, 8, 9, 10, 8, 8, 9, 6, 5, 4};
+//        // To convert an array into a Set first we convert it to a List. Next
+//        // with the list we create a HashSet and pass the list as the constructor.
+//        List list = Arrays.asList(numbers);
+//        Set set = new HashSet(list);
+        Set set = new HashSet();
+        Object[] objectArray2 = set.toArray();
+        Integer[] array2 = (Integer[]) set.toArray(new Integer[set.size()]);
+
     }
 
 
