@@ -39,10 +39,31 @@ public class Le451SortCharactersByFrequency {
        return sb.toString();
     }
 
+    // use PriorityQueue
+    public String frequencySort2(String s) {
+        Map<Character, Integer> map = new HashMap<>();
+        for(char c : s.toCharArray()){
+            map.put(c, map.getOrDefault(c, 0) + 1);
+        }
+        PriorityQueue<Map.Entry<Character, Integer>> pq = new PriorityQueue<>((a, b) -> b.getValue() - a.getValue());
+        //pq.addAll(map.entrySet());
+        for(Map.Entry<Character, Integer> en : map.entrySet()){
+            pq.add(en);
+        }
+        StringBuilder sb = new StringBuilder();
+        while(!pq.isEmpty()){
+            Map.Entry e = pq.poll();
+            for(int i = 0; i < (int)e.getValue(); i++){
+                sb.append(e.getKey());
+            }
+        }
+        return sb.toString();
+    }
+
     public static void main(String[] args) {
         String s = "tree";
         Le451SortCharactersByFrequency test = new Le451SortCharactersByFrequency();
-        String ret = test.frequencySort(s);
+        String ret = test.frequencySort2(s);
         System.out.println(ret);
 
     }
