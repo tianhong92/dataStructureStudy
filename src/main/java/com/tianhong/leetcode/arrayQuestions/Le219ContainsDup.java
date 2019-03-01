@@ -20,20 +20,6 @@ import java.util.Map;
 //Input: nums = [1,2,3,1,2,3], k = 2
 //Output: false
 public class Le219ContainsDup {
-    public boolean containsNearbyDuplicate(int[] nums, int k) {
-        return hasDup(nums, 0, k);
-    }
-
-    public static boolean hasDup(int[] array, int i, int k){
-        int lastIndex = array.length - 1;
-        if((i+k) > lastIndex ){
-            return false;
-        }
-        if(array[i] == array[i+k]){
-            return true;
-        }
-        return hasDup(array, i + 1, k);
-    }
 
     public boolean containsNearbyDuplicate2(int[] nums, int k) {
         if(nums == null || nums.length < 2)
