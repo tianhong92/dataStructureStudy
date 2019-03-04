@@ -4,10 +4,7 @@ package com.tianhong.leetcode.arrayQuestions;
 // find out whether there are two distinct indices i and j in the array such
 // that nums[i] = nums[j] and the absolute difference between i and j is at most k.
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 //Input: nums = [1,2,3,1], k = 3
 //Output: true
@@ -21,8 +18,8 @@ import java.util.Map;
 //Output: false
 public class Le219ContainsDup {
 
-    public boolean containsNearbyDuplicate2(int[] nums, int k) {
-        if(nums == null || nums.length < 2)
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+        if(nums == null || nums.length < 2 || nums.length < k + 1)
             return false;
         Map<Integer, List> map = new HashMap<>();
         for(int i = 0; i < nums.length; i++){
@@ -43,9 +40,31 @@ public class Le219ContainsDup {
         return false;
     }
 
+    // 利用滑动窗口
+    public boolean containsNearbyDuplicate2(int[] nums, int k) {
+        if(nums.length < 2 || k < 1){
+            return false;
+        }
+        int l = 0;
+        int r = l + k;
+        Set<Integer> set = new HashSet<>();
+        for(int i = 0; i <= r; i++) {
+            if(!set.add(nums[i])){
+                return true;
+            }
+        }
+
+        while(r < nums.length - 1){
+            set.remove(nums[l++]);
+            if(!set.add(nums[++r])){
+                return true;
+            }
+        }
+        return false;
+    }
 
     public static void main(String[] args) {
-        int[] test = { 1, 2, 3, 1, 2, 3 };
-        System.out.println(new Le219ContainsDup().containsNearbyDuplicate2(test, 2));
+        int[] test = { 1, 2, 3, 1, 3, 3 };
+        System.out.println(new Le219ContainsDup().containsNearbyDuplicate(test, 2));
     }
 }
