@@ -63,6 +63,22 @@ public class Le219ContainsDup {
         return false;
     }
 
+    // 利用滑动窗口
+    public boolean containsNearbyDuplicate3(int[] nums, int k) {
+        if(nums.length < 2 || k < 1)
+            return false;
+
+        Set<Integer> set = new HashSet<>();
+        for(int i = 0; i < nums.length; i++){
+            if(!set.add(nums[i]))
+                return true;
+            if(set.size() == k + 1){
+                set.remove(nums[i-k]);
+            }
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         int[] test = { 1, 2, 3, 1, 3, 3 };
         System.out.println(new Le219ContainsDup().containsNearbyDuplicate(test, 2));
