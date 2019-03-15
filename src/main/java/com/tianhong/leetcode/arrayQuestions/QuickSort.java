@@ -18,7 +18,7 @@ public class QuickSort {
         }
         int key = nums[start];
         while(start < end){
-            if(end > start && nums[end] >= key){
+            while(end > start && nums[end] >= key){
                 end--;
             }
             nums[start] = nums[end];
