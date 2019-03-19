@@ -17,7 +17,24 @@ class LNode {
 
 public class Le82RemoveDupsFromSortedList {
     public LNode deleteDuplicates(LNode head) {
-        
+        if(head == null)
+            return head;
+        LNode fakeHead = new LNode(-1);
+        fakeHead.next = head;
+        LNode pre = fakeHead;
+        LNode cur = head;
+        while(cur != null) {
+            while(cur.next != null && cur.next.val == cur.val){
+                cur = cur.next;
+            }
+            if(pre.next != cur){
+                pre.next = cur.next;
+            } else {
+                pre = pre.next;
+            }
+            cur = cur.next;
+        }
+        return fakeHead.next;
     }
 
 }
