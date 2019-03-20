@@ -12,18 +12,23 @@ class ListNode4 {
 
 public class Le25ReverseNodesInKGroup {
 
-//    public ListNode4 reverseKGroup(ListNode4 head, int k) {
-//        if(head == null || head.next == null)
-//            return head;
-//        ListNode4 dummy = new ListNode4(-1);
-//        ListNode4 pre = dummy;
-//        ListNode4 cur = head;
-//
-//        for(int i = 0; i < k - 1; i++){
-//            ListNode4 mid = cur.next;
-//
-//        }
-//    }
+    public ListNode4 reverseKGroup(ListNode4 head, int k) {
+        if(head == null || head.next == null)
+            return head;
+        ListNode4 dummy = new ListNode4(-1);
+        ListNode4 pre = dummy;
+        ListNode4 cur = head;
+        int count = 0;
+        while(cur != null){
+            count++;
+            if(count % k == 0){
+                pre = reverse(pre, cur);
+            } else {
+                cur = cur.next;
+            }
+        }
+        return dummy.next;
+    }
 
     // 反转（begin， end）区间（不包含）内的节点， 并返回
     // 0 -> 2 -> 3 -> 4 -> 5 -> 6   (0, 5)
