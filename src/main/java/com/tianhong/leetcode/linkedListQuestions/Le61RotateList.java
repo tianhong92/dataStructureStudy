@@ -17,6 +17,35 @@ class ListNode7 {
 
 public class Le61RotateList {
     public ListNode7 rotateRight(ListNode7 head, int k) {
+        if(head == null || head.next == null)
+            return head;
+        int length = 0;
+        ListNode7 cur = head;
+        while(cur != null){
+            cur = cur.next;
+            length++;
+        }
+        k = k % length;
+        ListNode7 pre = head;
+        ListNode7 start = head;
+        ListNode7 end = start;
+        for(int i = 1; i < k; i++){
+            end = end.next;
+        }
 
+        while(end.next != null){
+            pre = start;
+            start = start.next;
+            end = end.next;
+        }
+
+        end.next = head;
+        pre.next = null;
+
+        return start;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(0%3);
     }
 }
