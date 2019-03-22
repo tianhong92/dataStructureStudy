@@ -29,20 +29,24 @@ public class Le61RotateList {
         ListNode7 pre = head;
         ListNode7 start = head;
         ListNode7 end = start;
-        for(int i = 1; i < k; i++){
-            end = end.next;
+        if(k != 0) {
+            for (int i = 1; i < k; i++) {
+                end = end.next;
+            }
+
+            while (end.next != null) {
+                pre = start;
+                start = start.next;
+                end = end.next;
+            }
+
+            end.next = head;
+            pre.next = null;
+
+            return start;
+        } else {
+            return head;
         }
-
-        while(end.next != null){
-            pre = start;
-            start = start.next;
-            end = end.next;
-        }
-
-        end.next = head;
-        pre.next = null;
-
-        return start;
     }
 
     public static void main(String[] args) {
