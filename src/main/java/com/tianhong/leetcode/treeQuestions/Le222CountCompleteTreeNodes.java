@@ -34,6 +34,14 @@ public class Le222CountCompleteTreeNodes {
         return countNodes(root.left) + countNodes(root.right) + 1;
     }
 
+    public int countNodes2(TreeNode root) {
+        if(root == null)
+            return 0;
+        if(root.left == null)
+            return 1;
+        return countNodes2(root.left) + countNodes2(root.right) + 1;
+    }
+
     public static void main(String[] args) {
         System.out.println(1 << 0);
     }
