@@ -37,12 +37,14 @@ public class Le257BTreePath {
     }
 
     public static void main(String[] args) {
-        StringBuilder sb = new StringBuilder();
-        sb.append("a");
-        sb.append("b");
-        sb.append("c");
-        System.out.println(sb);
-        sb.delete(1, 2);
-        System.out.println(sb);
+        List<String> list = new ArrayList<>();
+        list.add("aa");
+        list.add("bb");
+        list.add("cc");
+        System.out.println(list);
+        list.remove(0);
+        list.remove(0);
+        System.out.println(list);
+
     }
 }
