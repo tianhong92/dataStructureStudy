@@ -10,57 +10,39 @@ package com.tianhong.leetcode.treeQuestions;
 
 public class Le98ValidateBST {
     public boolean isValidBST(TreeNode root) {
-       if(root == null)
-           return true;
-       return validLeft(root.left, root.val) && validRight(root.right, root.val);
-    }
-
-    public boolean validLeft(TreeNode node, int max){
-        if(node == null){
+        if(root == null)
             return true;
-        }
-        if(node.left == null && node.right == null){
-            if(node.val < max)
-                return true;
-            else
-                return false;
-        }
-        if(node.left != null){
-            if(node.left.val >= max || node.left.val >= node.val){
-                return false;
-            }
-        }
-        if(node.right != null){
-            if(node.right.val >= max || node.right.val <= node.val){
-                return false;
-            }
-        }
-
-        return validLeft(node.left, node.val) && validRight(node.right, node.val);
-    }
-
-
-    public boolean validRight(TreeNode node, int min){
-        if(node == null){
+        if(root.left == null && root.right == null)
             return true;
-        }
-        if(node.left == null && node.right == null){
-            if(node.val > min)
-                return true;
-            else
-                return false;
-        }
-        if(node.left != null){
-            if(node.left.val <= min || node.left.val > node.val){
-                return false;
-            }
-        }
-        if(node.right != null){
-            if(node.right.val <= min || node.right.val < node.val){
-                return false;
-            }
+        return validation(root.left, null, root.val) && validation(root.right, root.val, null);
+    }
+
+    // if node's value less than max, update max
+    public boolean validation(TreeNode node, Integer min, Integer max){
+        if(max != null && min != null && max < min)
+            return false;
+        if(node == null)
+            return true;
+        if(min != null && node.val <= min)
+            return false;
+        if(max != null && node.val >= max)
+            return false;
+        boolean left;
+        boolean right;
+        if(max == null){
+            left = validation(node.left, min, node.val);
+        } else {
+            left = validation(node.left, min, Math.min(max, node.val));
         }
 
-        return validLeft(node.left, node.val) && validRight(node.right, node.val);
+        if(min == null){
+            right = validation(node.right, node.val, max);
+        } else {
+            right = validation(node.right, Math.min(node.val, min), max);
+        }
+
+        return left && right;
     }
+
+
 }
