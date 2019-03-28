@@ -37,7 +37,7 @@ public class Le98ValidateBST {
         if(min == null)
             right = validation(node.right, node.val, max);
         else
-            right = validation(node.right, Math.min(node.val, min), max);
+            right = validation(node.right, Math.max(node.val, min), max);
 
         return left && right;
     }
