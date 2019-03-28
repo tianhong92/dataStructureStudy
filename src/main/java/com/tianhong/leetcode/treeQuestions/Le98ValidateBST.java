@@ -28,17 +28,16 @@ public class Le98ValidateBST {
             return false;
         boolean left;
         boolean right;
-        if(max == null){
+        if(max == null)
             left = validation(node.left, min, node.val);
-        } else {
+        else
             left = validation(node.left, min, Math.min(max, node.val));
-        }
 
-        if(min == null){
+
+        if(min == null)
             right = validation(node.right, node.val, max);
-        } else {
+        else
             right = validation(node.right, Math.min(node.val, min), max);
-        }
 
         return left && right;
     }
