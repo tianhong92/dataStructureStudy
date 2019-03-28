@@ -19,8 +19,7 @@ public class Le98ValidateBST {
 
     // if node's value less than max, update max
     public boolean validation(TreeNode node, Integer min, Integer max){
-        if(max != null && min != null && max < min)
-            return false;
+
         if(node == null)
             return true;
         if(min != null && node.val <= min)
