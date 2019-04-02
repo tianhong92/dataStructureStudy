@@ -1,8 +1,6 @@
 package com.tianhong.leetcode.treeQuestions;
 
-import sun.reflect.generics.tree.Tree;
-
-public class Le235LowestCommonAncestor {
+public class Le235LowestCommonAncestorBST {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if(root == null || (root.left == null && root.right == null))
             return null;
@@ -15,7 +13,7 @@ public class Le235LowestCommonAncestor {
         return root;
     }
 
-    public static void main(String[] args) {
+        public static void main(String[] args) {
         TreeNode n1 = new TreeNode(6);
         TreeNode n2 = new TreeNode(2);
         TreeNode n3 = new TreeNode(8);
@@ -30,7 +28,7 @@ public class Le235LowestCommonAncestor {
         n2.right = n5;
         n3.left = n6;
         n3.right = n7;
-        Le235LowestCommonAncestor test = new Le235LowestCommonAncestor();
+        Le235LowestCommonAncestorBST test = new Le235LowestCommonAncestorBST();
         TreeNode ret = test.lowestCommonAncestor(n1, n2, n5);
         System.out.println(ret.val);
 
