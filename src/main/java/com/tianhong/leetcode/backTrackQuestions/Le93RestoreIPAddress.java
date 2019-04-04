@@ -1,5 +1,6 @@
 package com.tianhong.leetcode.backTrackQuestions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 // Given a string containing only digits, restore it by returning all possible
@@ -14,15 +15,23 @@ import java.util.List;
 // 每一位0-255之间就是合法的
 
 public class Le93RestoreIPAddress {
-    private List<String> list;
+    private List<String> list = new ArrayList<>();
     public List<String> restoreIpAddresses(String s) {
         if(s.length() < 4)
             return list;
-        backTrack("", s.toCharArray(), 0, 0);
+        backTrack("", "", s.toCharArray(), 0, 0);
         return list;
     }
 
-    public void backTrack(String combination, char[] chars, int index, int count){
+    public void backTrack(String combination, String temp, char[] chars, int index, int count){
+        if(temp != "" && temp.charAt(0) == '0' && temp.length() > 1)
+            return;
+        if(count < 4 && count >= 1){
+            combination += temp;
+            combination += ".";
+        } else {
+            combination += temp;
+        }
         if(count == 4 && combination.length() == chars.length + 3) {
             list.add(combination);
             return;
@@ -31,12 +40,12 @@ public class Le93RestoreIPAddress {
             return;
         StringBuilder sb = new StringBuilder();
         for(int i = 0; i < 3; i++){
-            sb.append(chars[i+index]);
-            if(Integer.valueOf(sb.toString()) <= 255){
-                if(count < 3) {
-                    backTrack(combination += sb.toString() + ".", chars, index + i + 1, count + 1);
+            if(i+index < chars.length) {
+                sb.append(chars[i + index]);
+                if (Integer.valueOf(sb.toString()) <= 255) {
+                    backTrack(combination, sb.toString(), chars, index + i + 1, count + 1);
                 } else {
-                    backTrack(combination += sb.toString(), chars, index + i + 1, count + 1);
+                    break;
                 }
             } else {
                 break;
@@ -48,6 +57,6 @@ public class Le93RestoreIPAddress {
         String a = "25525511135";
         Le93RestoreIPAddress test = new Le93RestoreIPAddress();
         List<String> ret = test.restoreIpAddresses(a);
-        System.out.println(ret);
+        System.out.println("dfd");
     }
 }
