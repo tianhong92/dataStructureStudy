@@ -52,11 +52,4 @@ public class Le93RestoreIPAddress {
             }
         }
     }
-
-    public static void main(String[] args) {
-        String a = "25525511135";
-        Le93RestoreIPAddress test = new Le93RestoreIPAddress();
-        List<String> ret = test.restoreIpAddresses(a);
-        System.out.println("dfd");
-    }
 }
