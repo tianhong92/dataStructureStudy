@@ -69,6 +69,41 @@ public class Le93RestoreIPAddress {
     }
 
 
+    public List<String> restoreIpAddresses2(String s) {
+        if(s.length() < 4)
+            return list;
+        String s1 = "", s2 = "", s3 = "", s4 = "";
+        for(int i = 0; i < 3; i++) {
+            for(int j = i + 1; j <= i + 3; j++){
+                for(int k = j + 1; k <= j + 3; k++) {
+                    for(int g = k + 1; g <= k + 3; g++) {
+                        if(g == s.length() - 1){
+                            s1 = s.substring(0, i + 1);
+                            s2 = s.substring(i + 1, j + 1);
+                            s3 = s.substring(j + 1, k + 1);
+                            s4 = s.substring(k + 1, g + 1);
+                            if(validAddress(s1) && validAddress(s2) && validAddress(s3) && validAddress(s4)){
+                                list.add(s1 + "." + s2 + "." + s3 + "."+ s4);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return list;
+    }
+
+    public boolean validAddress(String s) {
+        if(s.length() == 0)
+            return false;
+        int num = Integer.valueOf(s);
+        int size = s.length();
+        if(size == 1 || (size == 2 && num >= 10 && num <= 99) || (size == 3 && num >= 100 && num <= 255))
+            return true;
+        else
+            return false;
+    }
+
 //    public static void main(String[] args) {
 //        String s = "25525511135";
 //        Le93RestoreIPAddress test = new Le93RestoreIPAddress();
