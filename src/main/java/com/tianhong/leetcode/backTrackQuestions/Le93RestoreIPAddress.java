@@ -14,42 +14,64 @@ import java.util.List;
 // C类： 192.0.0.1 - 223.255.255.255
 // 每一位0-255之间就是合法的
 
+//    public List<String> restoreIpAddresses(String s) {
+//        List<String> list = new LinkedList<>();
+//        backtrack(s,list,new StringBuilder(),0,0);
+//        return list;
+//    }
+//    private void backtrack(String s, List<String> list, StringBuilder sb, int index, int level){
+//        if(index > s.length() || level > 4) return;
+//        else if(index == s.length() && level == 4){
+//            list.add(sb.toString());
+//            return;
+//        }
+//        for(int i = 1;i <= 3;i++){
+//            if(index+i > s.length()) break;
+//            int num = Integer.valueOf(s.substring(index,index+i));
+//            if(i == 1 || i==2 && num >=10 && num <=99 || i == 3 && num >= 100 && num <= 255){
+//                sb.append(num);
+//                if(level < 3) sb.append(".");
+//                backtrack(s,list,sb,index+i,level+1);
+//                if(level < 3) sb.deleteCharAt(sb.length()-1);
+//                sb.delete(sb.length()-i,sb.length());
+//            }
+//        }
+//    }
+
 public class Le93RestoreIPAddress {
     private List<String> list = new ArrayList<>();
     public List<String> restoreIpAddresses(String s) {
         if(s.length() < 4)
             return list;
-        backTrack("", "", s.toCharArray(), 0, 0);
+        backTrack(s, new StringBuilder(), 0, 0);
         return list;
     }
 
-    public void backTrack(String combination, String temp, char[] chars, int index, int count){
-        if(temp != "" && temp.charAt(0) == '0' && temp.length() > 1)
+    public void backTrack(String s, StringBuilder sb, int index, int level) {
+        if(index > s.length() || level > 4)
             return;
-        if(count < 4 && count >= 1){
-            combination += temp;
-            combination += ".";
-        } else {
-            combination += temp;
-        }
-        if(count == 4 && combination.length() == chars.length + 3) {
-            list.add(combination);
+        if(level == 4 && index == s.length()){
+            list.add(sb.toString());
             return;
         }
-        if(count == 4)
-            return;
-        StringBuilder sb = new StringBuilder();
-        for(int i = 0; i < 3; i++){
-            if(i+index < chars.length) {
-                sb.append(chars[i + index]);
-                if (Integer.valueOf(sb.toString()) <= 255) {
-                    backTrack(combination, sb.toString(), chars, index + i + 1, count + 1);
-                } else {
-                    break;
-                }
-            } else {
-                break;
+        for(int i = 1; i <= 3; i++){
+            int num = Integer.valueOf(s.substring(index, index + i));
+            if(i == 1 || (i == 2 && i >= 10 && i <= 99) || (i == 3 && i >= 100 && i <= 255)) {
+                sb.append(num);
+                if(level < 3)
+                    sb.append(".");
+                backTrack(s, sb, index + i, level + 1);
+                if(level < 3)
+                    sb.delete(sb.length() - 1, sb.length());
+                sb.delete(sb.length() - i, sb.length());
             }
         }
     }
+
+
+//    public static void main(String[] args) {
+//        String s = "25525511135";
+//        Le93RestoreIPAddress test = new Le93RestoreIPAddress();
+//        System.out.println(test.restoreIpAddresses(s));
+//    }
 }
