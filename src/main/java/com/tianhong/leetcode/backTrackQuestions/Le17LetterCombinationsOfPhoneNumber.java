@@ -19,23 +19,27 @@ public class Le17LetterCombinationsOfPhoneNumber {
     public List<String> letterCombinations(String digits) {
         if(digits.length() == 0)
             return list;
-        char[] cs = digits.toCharArray();
-        backTrack("", cs, 0);
+        backTrack(new StringBuilder(), digits.toCharArray(), 0);
         return list;
     }
 
-    public void backTrack(String combination, char[] digits, int index){
-        if(index == digits.length) {
-            list.add(combination);
-            return;
-        }
-        String str = strings[digits[index] - '2'];
-        for(char c : str.toCharArray()){
-            backTrack(combination + String.valueOf(c), digits, index + 1);
-        }
+    public void backTrack(StringBuilder sb, char[] digits, int index){
+       if(index == digits.length) {
+           list.add(sb.toString());
+           return;
+       }
+       char[] cs = strings[digits[index] - '2'].toCharArray();
+       for(int i = 0; i < cs.length; i++) {
+           sb.append(cs[i]);
+           backTrack(sb, digits, index + 1);
+           sb.delete(sb.length() - 1, sb.length());
+       }
     }
 
     public static void main(String[] args) {
-        System.out.println('7' - '2');
+        String digits = "234";
+        Le17LetterCombinationsOfPhoneNumber test = new Le17LetterCombinationsOfPhoneNumber();
+        test.letterCombinations(digits);
+        System.out.println(test.list);
     }
 }

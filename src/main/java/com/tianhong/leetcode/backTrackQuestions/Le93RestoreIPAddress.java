@@ -40,32 +40,49 @@ import java.util.List;
 
 public class Le93RestoreIPAddress {
     private List<String> list = new ArrayList<>();
+
     public List<String> restoreIpAddresses(String s) {
-        if(s.length() < 4)
+        if(s == null || s.length() < 4)
             return list;
-        backTrack(s, new StringBuilder(), 0, 0);
+        backTrack(new StringBuilder(), 0, s, 0);
         return list;
     }
 
-    public void backTrack(String s, StringBuilder sb, int index, int level) {
-        if(index > s.length() || level > 4)
-            return;
-        if(level == 4 && index == s.length()){
-            list.add(sb.toString());
+    public void backTrack(StringBuilder sb, int index, String s, int level) {
+        if(index > s.length()) {
             return;
         }
-        for(int i = 1; i <= 3; i++){
-            int num = Integer.valueOf(s.substring(index, index + i));
-            if(i == 1 || (i == 2 && i >= 10 && i <= 99) || (i == 3 && i >= 100 && i <= 255)) {
-                sb.append(num);
-                if(level < 3)
+        if(level == 4) {
+            if(index == s.length())
+                list.add(sb.toString());
+            return;
+        }
+        for(int i = 1; i <= 3; i++) {
+            if(index + i > s.length())
+                break;
+            if(validAddress(s.substring(index, index + i))) {
+                sb.append(s.substring(index, index + i));
+                if (level < 3)
                     sb.append(".");
-                backTrack(s, sb, index + i, level + 1);
-                if(level < 3)
+                backTrack(sb, index + i, s, level + 1);
+                if (level < 3)
                     sb.delete(sb.length() - 1, sb.length());
                 sb.delete(sb.length() - i, sb.length());
             }
         }
+
+    }
+
+
+    public boolean validAddress(String s) {
+        if(s.length() == 0)
+            return false;
+        int num = Integer.valueOf(s);
+        int size = s.length();
+        if(size == 1 || (size == 2 && num >= 10 && num <= 99) || (size == 3 && num >= 100 && num <= 255))
+            return true;
+        else
+            return false;
     }
 
 
@@ -93,20 +110,4 @@ public class Le93RestoreIPAddress {
         return list;
     }
 
-    public boolean validAddress(String s) {
-        if(s.length() == 0)
-            return false;
-        int num = Integer.valueOf(s);
-        int size = s.length();
-        if(size == 1 || (size == 2 && num >= 10 && num <= 99) || (size == 3 && num >= 100 && num <= 255))
-            return true;
-        else
-            return false;
-    }
-
-//    public static void main(String[] args) {
-//        String s = "25525511135";
-//        Le93RestoreIPAddress test = new Le93RestoreIPAddress();
-//        System.out.println(test.restoreIpAddresses(s));
-//    }
 }
