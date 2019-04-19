@@ -12,7 +12,6 @@ public class Le130SurroundedRegions {
         for(int i = 1; i < x - 1; i++) {
             for(int j = 1; j < y - 1; j++) {
                 if(!taken[i][j] && board[i][j] == 'O' && isSurrounded(board, i, j, taken)){
-                    System.out.println("i = " + i + "j = "+j);
                     flip(board, i, j);
                 }
             }
@@ -24,13 +23,16 @@ public class Le130SurroundedRegions {
             return false;
         if(board[x][y] == 'X' || taken[x][y])
             return true;
-        boolean result = false;
+        boolean result1 = false, result2 = false, result3 = false, result4 = false;
         if(board[x][y] == 'O') {
             taken[x][y] = true;
-            result = isSurrounded(board, x - 1, y, taken) && isSurrounded(board, x + 1, y, taken)
-                    && isSurrounded(board, x, y - 1, taken) && isSurrounded(board, x, y + 1, taken);
+
+            result1 = isSurrounded(board, x - 1, y, taken);
+            result2 = isSurrounded(board, x + 1, y, taken);
+            result3 = isSurrounded(board, x, y - 1, taken);
+            result4 = isSurrounded(board, x, y + 1, taken);
         }
-        return result;
+        return result1 && result2 && result3 && result4;
     }
 
     public void flip(char[][] board, int x, int y) {
@@ -51,10 +53,11 @@ public class Le130SurroundedRegions {
     }
 
     public static void main(String[] args) {
-        char[][] cs = new char[][] {{'X', 'X', 'X', 'X'}, {'X', 'O', 'O', 'X'}, {'X', 'X', 'O', 'X'}, {'X', 'O', 'X', 'X'}};
+        char[][] cs = new char[][] {{'O', 'O', 'O', 'O', 'X', 'X'}, {'O', 'O', 'O', 'O', 'O', 'O'},
+                                    {'O', 'X', 'O', 'X', 'O', 'O'}, {'O', 'X', 'O', 'O', 'X', 'O'},
+                                    {'O', 'X', 'O', 'X', 'O', 'O'}, {'O', 'X', 'O', 'O', 'O', 'O'}};
         Le130SurroundedRegions test = new Le130SurroundedRegions();
         test.solve(cs);
-        System.out.println("sdfd");
     }
 
 }
