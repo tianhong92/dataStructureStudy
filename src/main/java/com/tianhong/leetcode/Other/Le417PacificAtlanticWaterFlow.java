@@ -29,12 +29,12 @@ public class Le417PacificAtlanticWaterFlow {
                 return 0;
             if(passable[x][y])
                 return 3;
+        } else {
+            if (inAtlantic(matrix, x, y))
+                return 1;
+            if (inPacific(matrix, x, y))
+                return 2;
         }
-
-        if(inAtlantic(matrix, x, y))
-            return 1;
-        if(inPacific(matrix, x, y))
-            return 2;
 
         // left, up, right, down
         int left = 0, up = 0, right = 0, down = 0;
@@ -72,5 +72,12 @@ public class Le417PacificAtlanticWaterFlow {
                 toAtlantic = 2;
         }
         return toAtlantic + toPacifit;
+    }
+
+    public static void main(String[] args) {
+        int[][] matrix = new int[][]{{ 1, 2, 2, 3, 5 }, { 3, 2, 3, 4, 4 },
+                { 2, 4, 5, 3, 1 }, { 6, 7, 1, 4, 5 }, { 5, 1, 1, 2, 4 }};
+        Le417PacificAtlanticWaterFlow test = new Le417PacificAtlanticWaterFlow();
+        test.pacificAtlantic(matrix);
     }
 }
