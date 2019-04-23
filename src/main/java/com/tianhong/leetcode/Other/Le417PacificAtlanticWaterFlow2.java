@@ -1,7 +1,10 @@
 package com.tianhong.leetcode.Other;
 
+import java.math.RoundingMode;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * @author TianhongWang
@@ -69,5 +72,19 @@ public class Le417PacificAtlanticWaterFlow2 {
 
     public boolean inBoard(int[][] matrix, int x, int y){
         return x >= 0 && y >= 0 && x < matrix.length && y <matrix[0].length ? true : false;
+    }
+
+    public static void main(String[] args) {
+        NumberFormat nf = NumberFormat.getInstance();
+        nf.setRoundingMode(RoundingMode.HALF_UP);
+        nf.setMinimumFractionDigits(0);//设置最小保留几位小数
+        nf.setMaximumFractionDigits(0);
+        Double tt = 25.6;
+        Double rr = 25.4;
+        System.out.println(nf.format(tt));
+        System.out.println(nf.format(rr));
+
+        Random r = new Random();
+        System.out.println(String.valueOf(r.nextInt(100)));
     }
 }
