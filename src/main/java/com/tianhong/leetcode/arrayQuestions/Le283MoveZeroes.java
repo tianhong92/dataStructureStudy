@@ -4,6 +4,7 @@ package com.tianhong.leetcode.arrayQuestions;
 // Input: [0,1,0,3,12]
 // Output: [1,3,12,0,0]
 public class Le283MoveZeroes {
+
     // move 0 to the end of the array, and move forward the elements after the 0
     public static void moveZeroes(int[] nums) {
         int i = 0;
@@ -39,6 +40,7 @@ public class Le283MoveZeroes {
             nums[j] = 0;
         }
     }
+
 
     // swap
     public static void solution3(int[] nums){
