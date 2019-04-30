@@ -1,6 +1,6 @@
 package com.tianhong.leetcode.dynamic;
 
-public class Le343IntegerBreak {
+public class Le343IntegerBreakUsingBackTrack {
     private int maxProduct;
     public int integerBreak(int n) {
         if(n <= 2)
@@ -21,7 +21,7 @@ public class Le343IntegerBreak {
     }
 
     public static void main(String[] args) {
-        Le343IntegerBreak test = new Le343IntegerBreak();
+        Le343IntegerBreakUsingBackTrack test = new Le343IntegerBreakUsingBackTrack();
         test.integerBreak(6);
         System.out.println(test.maxProduct);
     }
