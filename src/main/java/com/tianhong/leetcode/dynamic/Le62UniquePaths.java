@@ -1,6 +1,6 @@
 package com.tianhong.leetcode.dynamic;
 
-public class Le63UniquePaths {
+public class Le62UniquePaths {
     public int uniquePaths(int m, int n) {
         if(m < 1 || n < 1)
             return 0;
