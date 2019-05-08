@@ -1,4 +1,4 @@
-package com.tianhong.leetcode.dynamic;
+package com.tianhong.leetcode.dynamicProgramming;
 
 public class Le63UniquePathII {
     public int uniquePathsWithObstacles(int[][] obstacleGrid) {

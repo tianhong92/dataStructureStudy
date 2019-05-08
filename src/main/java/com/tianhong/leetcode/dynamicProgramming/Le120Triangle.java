@@ -1,7 +1,5 @@
-package com.tianhong.leetcode.dynamic;
+package com.tianhong.leetcode.dynamicProgramming;
 
-import java.math.RoundingMode;
-import java.text.NumberFormat;
 import java.util.List;
 
 /**

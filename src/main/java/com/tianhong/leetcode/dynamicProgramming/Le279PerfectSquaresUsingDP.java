@@ -1,4 +1,4 @@
-package com.tianhong.leetcode.dynamic;
+package com.tianhong.leetcode.dynamicProgramming;
 
 public class Le279PerfectSquaresUsingDP {
     // 动态规划

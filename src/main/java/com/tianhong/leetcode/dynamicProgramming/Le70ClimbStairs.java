@@ -1,7 +1,4 @@
-package com.tianhong.leetcode.dynamic;
-
-import java.util.HashMap;
-import java.util.Map;
+package com.tianhong.leetcode.dynamicProgramming;
 
 /**
  * @author TianhongWang

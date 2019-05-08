@@ -1,4 +1,4 @@
-package com.tianhong.leetcode.dynamic;
+package com.tianhong.leetcode.dynamicProgramming;
 
 public class Le62UniquePaths {
     public int uniquePaths(int m, int n) {
