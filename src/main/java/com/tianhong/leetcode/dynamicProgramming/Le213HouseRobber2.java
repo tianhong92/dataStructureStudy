@@ -7,7 +7,8 @@ public class Le213HouseRobber2 {
             return 0;
         if(nums.length == 1)
             return nums[0];
-        return Math.max(tryRob(nums, 0, nums.length - 2, new int[nums.length]), tryRob(nums, 1, nums.length - 1, new int[nums.length]));
+        return Math.max(tryRob(nums, 0, nums.length - 2, new int[nums.length]),
+                tryRob(nums, 1, nums.length - 1, new int[nums.length]));
     }
 
     // 尝试抢劫[index1...index2]的房子
@@ -22,13 +23,6 @@ public class Le213HouseRobber2 {
         }
         memo[index1] = res;
         return res;
-    }
-
-    public static void main(String[] args) {
-        int[] arr = new int[] {1, 3, 1, 3, 100};
-        Le213HouseRobber2 test = new Le213HouseRobber2();
-        int res = test.rob(arr);
-        System.out.println(res);
     }
 
 }
