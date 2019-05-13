@@ -4,8 +4,7 @@ import com.tianhong.leetcode.treeQuestions.TreeNode;
 
 public class Le337HouseRobber3 {
     public int rob(TreeNode root) {
-        int[] ret = recursive(root);
-        return Math.max(ret[0], ret[1]);
+        return recursive(root)[0];
     }
 
     // ret[0]代表左右孩子和
@@ -14,10 +13,10 @@ public class Le337HouseRobber3 {
         int[] ret = new int[2];
         if(root == null)
             return ret;
-        int[] retLeft = recursive(root.left);
-        int[] retRight = recursive(root.right);
-        ret[0] = retLeft[1] + retRight[1];
-        ret[1] = Math.max(retLeft[0] + retRight[0] + root.val, ret[0]);
-        return ret;
+        int[] left = recursive(root.left);
+        int[] right = recursive(root.right);
+        ret[0] = left[1] + right[1];
+        ret[1] = left[0] + right[0] + root.val;
+        return new int[] { Math.max(ret[0], ret[1]), ret[0] };
     }
 }
