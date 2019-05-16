@@ -2,22 +2,20 @@ package com.tianhong.leetcode.dynamicProgramming;
 
 public class Le309BestTimeToBuyAndSellStockDP {
     public int maxProfit(int[] prices) {
-        int preSell = 0, preRest = 0, preBuy = 0;
         int length = prices.length;
-        // 可买
-        int[] s0 = new int[length + 1];
-        // 可卖
-        int[] s1 = new int[length + 1];
-        // 必须休息
-        int[] s2 = new int[length + 1];
-        s0[0] = 0;
-        s1[0] = 0;
-        s2[0] = 0;
-        for(int i = 1; i <= length; i++) {
-            s0[i] = Math.max(s2[i - 1], s0[i - 1]);
-            s1[i] = Math.max(s0[i - 1] - prices[i - 1], s1[i - 1]);
-            s2[i] = s1[i - 1] + prices[i - 1];
+        if(length <= 1)
+            return 0;
+        int[] buy = new int[length];
+        int[] rest = new int[length];
+        int[] sell = new int[length];
+        buy[0] -= prices[0];
+        rest[0] = 0;
+        sell[0] = 0;
+        for(int i = 1; i < length; i++) {
+            buy[i] = Math.max(buy[i - 1], rest[i - 1] - prices[i]);
+            sell[i] = buy[i - 1] + prices[i];
+            rest[i] = Math.max(sell[i - 1], rest[i - 1]);
         }
-        return Math.max(Math.max(s0[length], s1[length]), s2[length]);
+        return Math.max(sell[length - 1], rest[length - 1]);
     }
 }
