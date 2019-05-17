@@ -5,16 +5,21 @@ package com.tianhong.leetcode.dynamicProgramming;
 
 
 public class KnapsackQuestion {
+    int[][] memo;
     // w数组代表重量; v数组代表价值; c代表背包的容量
     public int knapsack(int[] w, int[] v, int c) {
+        memo = new int[w.length][c + 1];
         return maxValue(w, v, c, w.length - 1);
     }
 
     public int maxValue(int[] w, int[] v, int c, int index) {
         if(index < 0 || c < 0)
             return 0;
-        int max1 = v[index] + maxValue(w, v, c - w[index], index - 1);
-        int max2 = maxValue(w, v, c, index - 1);
-        return Math.max(max1, max2);
+        if(memo[index][c] != 0)
+            return memo[index][c];
+        int max = maxValue(w, v, c, index - 1);
+        if(c >= w[index])
+             max = Math.max(max, v[index] + maxValue(w, v, c - w[index], index - 1));
+        return max;
     }
 }
