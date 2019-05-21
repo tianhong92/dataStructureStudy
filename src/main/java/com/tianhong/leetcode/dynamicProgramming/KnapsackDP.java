@@ -6,22 +6,21 @@ package com.tianhong.leetcode.dynamicProgramming;
 public class KnapsackDP {
     // w数组代表重量; v数组代表价值; c代表背包的容量
     public int knapsack(int[] w, int[] v, int c) {
-        int n = w.length;
-        if(n == 0 || n != v.length)
+        if(w.length != v.length || c == 0 || w.length == 0)
             return 0;
-        int[][] dp = new int[n][c + 1];
-        for(int i = 0; i <= c; i++) {
-            dp[0][i] = w[0] <= i ? v[0] : 0;
+        int[][] dp = new int[2][c + 1];
+        for(int q = 0; q <= c; q++){
+            dp[0][q] = w[0] >= q ? v[0] : 0;
         }
 
-        for(int j = 1; j < n; j++){
-            for(int k = 0; k <= c; k++) {
-                dp[j][k] = dp[j - 1][k];
-                if(k >= w[j]){
-                    dp[j][k] = Math.max(dp[j][k], v[j] + dp[j - 1][k - w[j]]);
+        for(int i = 1; i < w.length; i++) {
+            for(int j = 0; j <= c; j++) {
+                dp[i%2][j] = dp[(i - 1)%2][j];
+                if(w[i] <= j) {
+                    dp[i%2][j] = Math.max(dp[i%2][j], v[i] + dp[(i - 1)%2][j - w[i]]);
                 }
             }
         }
-        return dp[n - 1][c];
+        return dp[(w.length - 1)%2][c];
     }
 }
