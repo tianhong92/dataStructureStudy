@@ -25,7 +25,7 @@ public class Le322CoinChange {
         }
         for (int i = 0; i < coins.length; i++) {
             coinAmount(coins, remain - coins[i], amount + 1);
-        }
+         }
     }
 
     public static void main(String[] args) {
