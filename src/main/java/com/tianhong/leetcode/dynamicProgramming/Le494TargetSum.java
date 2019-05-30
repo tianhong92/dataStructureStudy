@@ -9,7 +9,7 @@ public class Le494TargetSum {
     }
 
     public int countWays(int[] nums, int S, int total, int index) {
-        if(index == nums.length - 1){
+        if(index == nums.length){
             if(S == total)
                 return 1;
             else
@@ -19,8 +19,9 @@ public class Le494TargetSum {
     }
 
     public static void main(String[] args) {
-        int[] arr = new int[]{1, 1, 1, 1, 1};
+        int[] arr = new int[]{1000};
         Le494TargetSum test = new Le494TargetSum();
-        test.findTargetSumWays(arr, 3);
+        int ret = test.findTargetSumWays(arr, -1000);
+        System.out.println(ret);
     }
 }
