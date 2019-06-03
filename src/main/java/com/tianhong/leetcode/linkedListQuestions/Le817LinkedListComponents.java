@@ -2,7 +2,9 @@ package com.tianhong.leetcode.linkedListQuestions;
 
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Le817LinkedListComponents {
     public class ListNode {
@@ -15,7 +17,7 @@ public class Le817LinkedListComponents {
             return 0;
         int count = 0;
         boolean start = false;
-        List<Integer> list = new ArrayList<>();
+        Set<Integer> list = new HashSet<>();
         for(int i : G) {
             list.add(i);
         }
