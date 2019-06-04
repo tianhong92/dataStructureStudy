@@ -1,5 +1,7 @@
 package com.tianhong.leetcode.arrayQuestions;
 
+import java.util.Stack;
+
 public class Le739DailyTemperatures {
     public int[] dailyTemperatures(int[] T) {
         int[] ret = new int[T.length];
@@ -32,4 +34,18 @@ public class Le739DailyTemperatures {
         }
         return ret;
     }
+
+    public int[] dailyTemperatures3(int[] T) {
+        int[] ret = new int[T.length];
+        Stack<Integer> stack = new Stack<>();
+        for(int i = 0; i < T.length; i++) {
+            while(!stack.empty() && T[i] > T[stack.peek()]) {
+                int idx = stack.pop();
+                ret[idx] = i - idx;
+            }
+            stack.push(i);
+        }
+        return ret;
+    }
+
 }
