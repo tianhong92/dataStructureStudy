@@ -1,32 +1,23 @@
 package com.tianhong.leetcode.treeQuestions;
 
+import java.util.Arrays;
+
 public class Le889ConstructTreeFromPreAndPostOrder {
     public TreeNode constructFromPrePost(int[] pre, int[] post) {
-        int length = pre.length;
-        if(pre.length != post.length || pre == null || post == null) {
+        int size = pre.length;
+        if(size == 0)
             return null;
-        }
-        if(pre.length == 1) {
+        if(size == 1)
             return new TreeNode(pre[0]);
-        }
         TreeNode root = new TreeNode(pre[0]);
-        TreeNode first = root;
-        construct(root, pre, post, 1, length - 2);
-        return first;
-    }
-
-    public TreeNode construct(TreeNode root, int[] pre, int[] post, int i, int j) {
-        if(root == null || i >= pre.length || j < 0) {
-            return root;
+        int L = 0;
+        for(int i = 0; i < size; i++) {
+            if(post[i] == pre[1]){
+                L = i + 1;
+            }
         }
-        if(pre[i] != post[j]) {
-            root.left = construct(new TreeNode(pre[i]), pre, post, i++, j);
-            root.right = construct(new TreeNode(post[j]), pre, post, i, j--);
-        } else {
-            root.left = null;
-            root.right = construct(new TreeNode(pre[i]), pre, post, i++, j);
-        }
+        root.left = constructFromPrePost(Arrays.copyOfRange(pre, 1, 1 + L), Arrays.copyOfRange(post, 0, L));
+        root.right = constructFromPrePost(Arrays.copyOfRange(pre, L + 1, size), Arrays.copyOfRange(post, L, size - 1));
         return root;
     }
-
 }
