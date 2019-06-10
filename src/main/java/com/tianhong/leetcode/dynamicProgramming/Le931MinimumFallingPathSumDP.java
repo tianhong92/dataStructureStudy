@@ -22,7 +22,6 @@ public class Le931MinimumFallingPathSumDP {
                 B[i][j] = A[i][j] + Math.min(Math.min(left, mid), right);
             }
         }
-        Arrays.sort(B[length - 1]);
         int min = B[length - 1][0];
         for(int i = 1; i < N; i++) {
             if(B[length - 1][i] < min)

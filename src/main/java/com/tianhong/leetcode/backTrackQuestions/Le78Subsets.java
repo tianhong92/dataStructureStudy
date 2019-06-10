@@ -1,5 +1,7 @@
 package com.tianhong.leetcode.backTrackQuestions;
 
+import com.tianhong.leetcode.arrayQuestions.Le78Subset;
+
 import java.util.ArrayList;
 import java.util.List;
 // Given a set of distinct integers, nums, return all possible subsets (the power set).
@@ -35,5 +37,11 @@ public class Le78Subsets {
                temp.remove(temp.size() - 1);
            }
         }
+    }
+
+    public static void main(String[] args) {
+        int[] arr = new int[] {1, 2, 3};
+        Le78Subsets test = new Le78Subsets();
+        test.subsets(arr);
     }
 }
