@@ -5,6 +5,8 @@ package com.tianhong.leetcode.linkedListQuestions;
 // Input: 1->2->3->3->4->4->5
 // Output: 1->2->5
 
+import com.tianhong.leetcode.removeListNode.ListNode;
+
 // Input: 1->1->1->2->3
 // Output: 2->3
 class LNode {
@@ -37,4 +39,33 @@ public class Le82RemoveDupsFromSortedList {
         return fakeHead.next;
     }
 
+    public ListNode deleteDuplicates(ListNode head) {
+        if(head == null || head.next == null)
+            return head;
+        ListNode fakeHead = new ListNode(head.val - 1);
+        ListNode p = fakeHead;
+        ListNode pre = fakeHead;
+        ListNode cur = head;
+        ListNode next = cur.next;
+        while(cur != null) {
+            if(next != null) {
+                if(cur.val != pre.val && cur.val != next.val) {
+                    p.next = cur;
+                    p = p.next;
+                }
+                pre = cur;
+                cur = next;
+                next = next.next;
+            } else {
+                if(cur.val != pre.val) {
+                    p.next = cur;
+                    p = p.next;
+                }
+                p.next = null;
+                pre = cur;
+                cur = next;
+            }
+        }
+        return fakeHead.next;
+    }
 }

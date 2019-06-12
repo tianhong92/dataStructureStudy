@@ -1,31 +1,44 @@
 package com.tianhong.leetcode.Other;
 
 public class Le1020NumberOfEnclaves {
-    private boolean[][] taken;
     public int numEnclaves(int[][] A) {
         int m = A.length;
         int n = A[0].length;
-        taken = new boolean[m][n];
         int count = 0;
         for(int i = 0; i < m; i++) {
             for(int j = 0; j < n; j++) {
-                if(A[i][j] == 1)
-                    count = Math.max(floodFill(A, i, j, 1), count);
+                if(i == 0 || i == m - 1 || j ==0 || j == n - 1){
+                    floodFill(A, i, j);
+                }
+            }
+        }
+
+        for(int i = 0; i < m; i++) {
+            for(int j = 0; j < n; j++) {
+                if(A[i][j] == 1){
+                    count++;
+                }
             }
         }
         return count;
     }
 
-    public int floodFill(int[][] A, int x, int y, int size) {
-        if(notOnEdge(A, x, y) && A[x][y] == 1) {
-
+    public void floodFill(int[][] A, int x, int y) {
+        if(inBoard(A, x, y) && A[x][y] == 1){
+            A[x][y] = 0;
+            floodFill(A, x - 1, y);
+            floodFill(A, x + 1, y);
+            floodFill(A, x, y - 1);
+            floodFill(A, x, y + 1);
         }
-        return 0;
     }
 
-    public boolean notOnEdge(int[][] A, int x, int y) {
-        int m = A.length;
-        int n = A[0].length;
-        return x > 0 && x < m - 1 && y > 0 && y < n - 1 ? true : false;
+    public boolean inBoard(int[][] A, int x, int y) {
+        if(x >= 0 && x < A.length && y >= 0 && y < A[0].length){
+            return true;
+        } else {
+            return false;
+        }
     }
+
 }
