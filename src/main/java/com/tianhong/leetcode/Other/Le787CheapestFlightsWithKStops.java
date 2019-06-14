@@ -10,11 +10,8 @@ public class Le787CheapestFlightsWithKStops {
 
     public void backTrack(int[][] flights, int src, int dst, int K, int level, int price) {
         // 剪枝
-        if(total != Integer.MAX_VALUE && price > total)
+        if(level > K + 1 || total != Integer.MAX_VALUE && price > total)
             return;
-        if(level > K + 1){
-            return;
-        }
         if(src == dst && price < total) {
             total = price;
             return;
