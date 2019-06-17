@@ -43,6 +43,22 @@ public class Le849MaxDistanceToClosest {
         return count > max ? count : max;
     }
 
+    public int maxDistToClosest2(int[] seats) {
+        int size = 0, length  = 0;
+        for(int i = 0; i < seats.length; i++) {
+            if(seats[i] == 0) {
+                length ++;
+            } else if (seats[i] != 0) {
+                if(seats[0] == 0 && size == 0) {
+                    size = length;
+                } else {
+                    size = Math.max(size, (length + 1)/2);
+                }
+                length = 0;
+            }
+        }
+        return Math.max(size, length);
+    }
 
     public static void main(String[] args) {
         int[] arr = new int[]{1, 0, 0, 0};
