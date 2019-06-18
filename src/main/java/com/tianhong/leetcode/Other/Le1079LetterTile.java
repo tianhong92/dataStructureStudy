@@ -9,20 +9,21 @@ public class Le1079LetterTile {
     private Set<String> set;
     public int numTilePossibilities(String tiles) {
         set = new HashSet<>();
-        backTrack(tiles.toCharArray(), new StringBuilder(), new ArrayList<>());
+        backTrack(tiles.toCharArray(), new StringBuilder(), new boolean[tiles.length()]);
         return set.size();
     }
 
-    public void backTrack(char[] cs, StringBuilder sb, List<Integer> used) {
+
+    public void backTrack(char[] cs, StringBuilder sb, boolean[] used) {
         if(sb.length() > 0 && sb.length() <= cs.length)
             set.add(new String(sb));
         for(int i = 0; i < cs.length; i++) {
-            if(!used.contains(i)) {
+            if(!used[i]) {
                 sb.append(cs[i]);
-                used.add(i);
+                used[i] = true;
                 backTrack(cs, sb, used);
                 sb.deleteCharAt(sb.length() - 1);
-                used.remove((Object) i);
+                used[i] = false;
             }
         }
     }
