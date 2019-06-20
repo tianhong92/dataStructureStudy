@@ -1,5 +1,7 @@
 package com.tianhong.leetcode.Other;
 
+import java.util.Stack;
+
 public class Le402RemoveKDigits {
 
     public String removeKdigits(String num, int k) {
@@ -39,11 +41,38 @@ public class Le402RemoveKDigits {
         return getMin(cs, sb, i, j, level);
     }
 
-    public static void main(String[] args) {
-        String s = "10";
-        Le402RemoveKDigits test = new Le402RemoveKDigits();
-        String b = test.removeKdigits(s, 2);
-        System.out.println(b);
+
+    // Greedy + Stack
+    public String removeKdigits2(String num, int k) {
+        if(k >= num.length()) {
+            return "0";
+        }
+        char[] cs = num.toCharArray();
+        Stack<Character> stack = new Stack();
+        for(int i = 0; i < cs.length; i++) {
+            if(!stack.empty() && k > 0 && cs[i] < stack.peek()) {
+                stack.pop();
+                k--;
+            }
+            stack.push(cs[i]);
+        }
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < stack.size(); i++) {
+            sb.append(stack.pop());
+        }
+        String s = sb.reverse().toString();
+        String ret = null;
+        int count = 0;
+        for(int i = 0; i < sb.length(); i++) {
+            if(s.charAt(i) == '0') {
+                count++;
+            }
+        }
+        ret = s.substring(count, s.length());
+        if(s.length() == num.length()) {
+            ret = s.substring(k, s.length());
+        }
+        return ret;
     }
 
 }
