@@ -23,4 +23,10 @@ public class Le28ImplementStr {
         }
         return i;
     }
+
+    public static void main(String[] args) {
+        String a = "eeeeabcdefgabc";
+        String b = "abc";
+        System.out.println(a.indexOf(b));
+    }
 }
