@@ -26,4 +26,28 @@ public class Le55JumpGame {
         memo[index] = 1;
         return false;
     }
+
+    private boolean[] canReach;
+    public boolean canJump2(int[] nums) {
+        if(nums.length < 2)
+            return true;
+        canReach = new boolean[nums.length];
+        canReach[0] = true;
+
+
+        for(int i = 1; i < nums.length; i++) {
+            for(int j = 0; j < i; j++) {
+                if(canReach[j] && nums[j] >= (i - j)) {
+                    canReach[i] = true;
+                    break;
+                }
+            }
+            if(!canReach[i]) {
+                return false;
+            }
+        }
+        return canReach[nums.length - 1];
+    }
+
+
 }
